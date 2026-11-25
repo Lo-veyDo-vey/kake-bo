@@ -20,13 +20,13 @@
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Chart.js（グラフ描画ライブラリ） -->
+  <!-- Chart.js（グラフ描画用） -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
-  <!-- Supabase JavaScript Client v2（クラウド同期用） -->
+  <!-- Supabase JS Client v2（クラウド同期用） -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <!-- 日本の伝統色（白群・納戸色・錆納戸）カスタムテーマ設定 -->
+  <!-- 和色寒色テーマ設定：白群(#83ccd2)・納戸色(#008899)・錆納戸(#455765) -->
   <script>
     tailwind.config = {
       theme: {
@@ -35,41 +35,41 @@
             rounded: ['"M PLUS Rounded 1c"', '"Zen Maru Gothic"', '"Hiragino Maru Gothic ProN"', 'sans-serif'],
           },
           colors: {
-            // 白群（びゃくぐん #83CCD2）をベースにした淡色〜アクセント
+            // 白群（びゃくぐん #83ccd2）：アクセント・サブボタン・淡いハイライト
             byakugun: {
-              50: '#F2F8F9',
-              100: '#E3F2F4',
-              200: '#C5E6EA',
-              300: '#A3D9DF',
-              400: '#83CCD2',
-              500: '#5FB8C0',
+              50: '#f4f8f9',
+              100: '#e6f3f5',
+              200: '#cce7ea',
+              300: '#a8dadd',
+              400: '#83ccd2',
+              500: '#5eb8c0',
             },
-            // 納戸色（なんどいろ #008899）をベースにしたメインカラー
+            // 納戸色（なんどいろ #008899）：メインカラー・ヘッダー・プライマリボタン
             nando: {
-              50: '#E6F5F7',
-              100: '#C0E7EC',
-              400: '#249DAD',
+              50: '#e6f5f7',
+              100: '#bfe6eb',
+              400: '#269dad',
               500: '#008899',
-              600: '#007180',
-              700: '#005A66',
-              800: '#00434D',
+              600: '#007280',
+              700: '#005b66',
+              800: '#00444d',
             },
-            // 錆納戸（さびなんど #455765）をベースにした落ち着きのある文字・枠線色
+            // 錆納戸（さびなんど #455765）：見出し・落ち着いた枠線・ダークテキスト
             sabinando: {
-              50: '#F4F6F8',
-              100: '#E6ECEF',
-              200: '#DCE6EB',
-              300: '#B8C7D0',
-              400: '#8598A6',
-              500: '#647786',
+              50: '#f5f7f8',
+              100: '#e8edf0',
+              200: '#d5dfe5',
+              300: '#b3c3cd',
+              400: '#8397a5',
+              500: '#5f7382',
               600: '#455765',
-              700: '#33424E',
-              800: '#232F38',
+              700: '#34424d',
+              800: '#232e36',
             },
           },
           boxShadow: {
-            card: '0 6px 20px -6px rgba(69, 87, 101, 0.10), 0 2px 6px -2px rgba(0, 136, 153, 0.06)',
-            modal: '0 20px 44px -10px rgba(35, 47, 56, 0.28)',
+            card: '0 6px 22px -6px rgba(69, 87, 101, 0.10), 0 2px 6px -2px rgba(0, 136, 153, 0.06)',
+            modal: '0 22px 48px -12px rgba(35, 46, 54, 0.28)',
           },
         },
       },
@@ -77,36 +77,36 @@
   </script>
 
   <style>
-    /* 全体ベース設定：白群系の淡いオフホワイト背景と深い錆納戸の文字色 */
+    /* ベーススタイル：清潔感のある薄い青磁〜白背景（#f4f8f9） */
     body {
       font-family: 'M PLUS Rounded 1c', 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', sans-serif;
-      background-color: #F2F8F9;
-      color: #232F38;
+      background-color: #f4f8f9;
+      color: #232e36;
       min-height: 100vh;
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* 数字の桁幅を揃えて金額を見やすく表示 */
+    /* 数値の等幅表示 */
     .num-tabular {
       font-variant-numeric: tabular-nums;
     }
 
-    /* スマホ下部ナビのセーフエリア余白 */
+    /* スマホ下部ナビ分の余白確保 */
     .pb-safe {
-      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 5rem);
+      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 5.25rem);
     }
 
-    /* スクロールバーの装飾 */
+    /* スクロールバー装飾 */
     ::-webkit-scrollbar {
       width: 7px;
       height: 7px;
     }
     ::-webkit-scrollbar-track {
-      background: #E6ECEF;
+      background: #e8edf0;
       border-radius: 9999px;
     }
     ::-webkit-scrollbar-thumb {
-      background: #83CCD2;
+      background: #83ccd2;
       border-radius: 9999px;
     }
     ::-webkit-scrollbar-thumb:hover {
@@ -131,7 +131,7 @@
 </head>
 
 <body class="font-rounded text-sabinando-800 antialiased selection:bg-byakugun-200 selection:text-nando-800 pb-safe lg:pb-10">
-  <!-- トースト通知エリア（alertの代替） -->
+  <!-- トースト通知エリア（alert代替） -->
   <div
     id="toastContainer"
     class="fixed top-4 right-4 z-50 flex flex-col gap-2 pointer-events-none max-w-sm w-full px-4 sm:px-0"
@@ -139,17 +139,17 @@
   ></div>
 
   <!-- ===================================================================== -->
-  <!-- トップヘッダー（タイトル・同期ステータス・同期設定ボタン） -->
+  <!-- ヘッダー（シンプルに「家計簿」タイトル・同期ステータス・同期設定ボタン） -->
   <!-- ===================================================================== -->
   <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-sabinando-200 shadow-xs">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 py-3 flex items-center justify-between gap-2">
-      <!-- アプリアイコン＆シンプルな「家計簿」タイトル -->
+      <!-- アプリアイコン ＆ タイトル「家計簿」 -->
       <div class="flex items-center gap-2.5 min-w-0">
         <div
           class="w-10 h-10 rounded-2xl bg-gradient-to-br from-nando-500 to-byakugun-400 flex items-center justify-center text-white shadow-xs shrink-0"
           aria-hidden="true"
         >
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
             <path d="M9 7h6M9 11h6" />
@@ -160,18 +160,29 @@
         </h1>
       </div>
 
-      <!-- 右側：同期ステータスバッジ ＆ 同期設定・管理ボタン -->
-      <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+      <!-- 右側：ステータスバッジ・手動再同期・☁️ 同期設定・PC用管理ボタン -->
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
         <!-- 同期ステータスバッジ -->
         <button
           type="button"
           id="syncStatusBadge"
           onclick="openSyncModal()"
           class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full text-xs font-bold bg-sabinando-100 text-sabinando-600 border border-sabinando-200 hover:bg-byakugun-100 transition cursor-pointer"
-          title="クリックして同期設定を開く"
+          title="同期ステータスを確認"
         >
           <span id="syncStatusDot" class="w-2 h-2 rounded-full bg-sabinando-400"></span>
-          <span id="syncStatusText">未接続（端末保存）</span>
+          <span id="syncStatusText">未接続</span>
+        </button>
+
+        <!-- ログイン中のみ表示されるワンタップ再同期ボタン -->
+        <button
+          type="button"
+          id="quickResyncBtn"
+          onclick="syncWithCloud({ showToastOnSuccess: true })"
+          title="クラウドから最新データを再同期"
+          class="hidden items-center justify-center w-9 h-9 rounded-2xl bg-byakugun-100 hover:bg-byakugun-200 text-nando-700 border border-byakugun-300 font-bold text-sm transition cursor-pointer"
+        >
+          🔄
         </button>
 
         <!-- ☁️ 同期設定ボタン -->
@@ -184,38 +195,21 @@
           <span>同期設定</span>
         </button>
 
-        <!-- PC表示用の管理・バックアップモーダルボタン -->
+        <!-- PC表示用のカテゴリ・バックアップ管理ボタン -->
         <button
           type="button"
           onclick="openManageModal()"
           class="hidden lg:inline-flex items-center gap-1 px-3.5 py-2 rounded-2xl bg-byakugun-100 hover:bg-byakugun-200 text-sabinando-700 font-bold text-xs sm:text-sm border border-byakugun-300 transition cursor-pointer"
         >
           <span>⚙️</span>
-          <span>カテゴリ・管理</span>
+          <span>種類・管理</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- 見本（サンプル）データ表示中バナー -->
-  <div id="sampleBanner" class="hidden max-w-7xl mx-auto px-3 sm:px-6 mt-3">
-    <div class="bg-byakugun-100/90 border border-byakugun-400 rounded-2xl px-4 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm text-sabinando-700">
-      <div class="flex items-center gap-2 font-medium">
-        <span class="text-base">💡</span>
-        <span>現在は動作イメージ用の<strong>見本データ</strong>が含まれています（クラウド同期には混ざりません）。</span>
-      </div>
-      <button
-        type="button"
-        onclick="confirmClearSampleData()"
-        class="px-3 py-1 rounded-xl bg-white hover:bg-nando-500 hover:text-white text-nando-700 border border-byakugun-400 font-bold text-xs transition cursor-pointer shrink-0"
-      >
-        見本データを一括削除する
-      </button>
-    </div>
-  </div>
-
   <!-- ===================================================================== -->
-  <!-- メインコンテンツ（PCは左右2カラム常時表示 / スマホは下部タブで切り替え） -->
+  <!-- メイン2カラムレイアウト（PC：2カラム常時表示 / スマホ：下部ナビで切替） -->
   <!-- ===================================================================== -->
   <main class="max-w-7xl mx-auto px-3 sm:px-6 pt-4 sm:pt-6">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -223,9 +217,9 @@
       <!-- 左カラム（PC 5列 / スマホ Tab1「カレンダー・入力」） -->
       <!-- ================================================================= -->
       <div id="tabPanelCalendar" class="lg:col-span-5 space-y-5">
-        <!-- 1. カレンダーカード -->
-        <section class="bg-white border border-sabinando-200 rounded-3xl p-4 sm:p-5 shadow-card">
-          <!-- 月切り替えヘッダー -->
+        <!-- 1. 月表示カレンダーカード -->
+        <section class="bg-white border border-sabinando-200 rounded-[20px] p-4 sm:p-5 shadow-card">
+          <!-- 前月・次月・今日へ移動ヘッダー -->
           <div class="flex items-center justify-between gap-2 mb-3.5">
             <div class="flex items-center gap-1.5">
               <button
@@ -236,8 +230,8 @@
               >
                 ‹
               </button>
-              <h2 id="calendarTitle" class="text-base sm:text-lg font-extrabold text-sabinando-800 min-w-[7.5rem] text-center num-tabular">
-                2026年11月
+              <h2 id="calendarTitle" class="text-base sm:text-lg font-extrabold text-sabinando-700 min-w-[7.5rem] text-center num-tabular">
+                ---
               </h2>
               <button
                 type="button"
@@ -255,16 +249,16 @@
                 onclick="jumpToToday()"
                 class="px-2.5 py-1.5 rounded-xl bg-byakugun-100 hover:bg-byakugun-200 text-nando-700 font-bold text-xs transition cursor-pointer"
               >
-                今月へ
+                今日へ
               </button>
               <div class="bg-byakugun-50 border border-byakugun-200 rounded-2xl px-3 py-1 text-right">
-                <span class="text-[10px] text-sabinando-500 block leading-tight">月合計</span>
+                <span class="text-[10px] text-sabinando-500 block leading-tight">月の合計</span>
                 <span id="calendarMonthTotal" class="text-xs sm:text-sm font-extrabold text-nando-600 num-tabular">¥0</span>
               </div>
             </div>
           </div>
 
-          <!-- 曜日行 -->
+          <!-- 曜日ヘッダー -->
           <div class="grid grid-cols-7 gap-1 text-center text-[11px] font-bold mb-1">
             <div class="py-1 text-nando-600">日</div>
             <div class="py-1 text-sabinando-600">月</div>
@@ -278,27 +272,27 @@
           <!-- 日付セルグリッド -->
           <div id="calendarGrid" class="grid grid-cols-7 gap-1 sm:gap-1.5"></div>
 
-          <!-- カレンダー凡例 -->
+          <!-- 凡例 -->
           <div class="mt-3 pt-2.5 border-t border-sabinando-100 flex items-center justify-between text-[11px] text-sabinando-500">
             <div class="flex items-center gap-3">
               <span class="inline-flex items-center gap-1">
                 <span class="w-2 h-2 rounded-full bg-nando-500 inline-block"></span>出費あり
               </span>
-              <span class="inline-flex items-center gap-1">📷 レシート写真あり</span>
+              <span class="inline-flex items-center gap-1">📷 レシート画像あり</span>
             </div>
             <span>日付タップで選択</span>
           </div>
         </section>
 
-        <!-- 2. 選択日の出費入力フォーム＆明細リスト -->
-        <section class="bg-white border border-sabinando-200 rounded-3xl p-4 sm:p-5 shadow-card">
-          <!-- 選択日ヘッダー -->
+        <!-- 2. 選択日の出費入力フォーム ＆ 明細一覧カード -->
+        <section class="bg-white border border-sabinando-200 rounded-[20px] p-4 sm:p-5 shadow-card">
+          <!-- 選択中日付ヘッダー -->
           <div class="flex items-center justify-between gap-2 pb-3 border-b border-sabinando-100">
             <div>
               <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-byakugun-100 text-nando-700 inline-block">
-                選択中の日
+                選択中の日付
               </span>
-              <h3 id="selectedDateLabel" class="text-base sm:text-lg font-extrabold text-sabinando-800 mt-0.5 num-tabular">
+              <h3 id="selectedDateLabel" class="text-base sm:text-lg font-extrabold text-sabinando-700 mt-0.5 num-tabular">
                 ---
               </h3>
             </div>
@@ -308,11 +302,11 @@
             </div>
           </div>
 
-          <!-- 新規・編集入力フォーム（カレンダー選択日と自動連動） -->
-          <form id="recordForm" onsubmit="handleRecordSubmit(event)" class="mt-3.5 bg-byakugun-50/80 border border-byakugun-200 rounded-2xl p-3.5 space-y-3">
+          <!-- 出費入力・編集フォーム -->
+          <form id="recordForm" onsubmit="handleRecordSubmit(event)" class="mt-3.5 bg-byakugun-50/90 border border-byakugun-200 rounded-2xl p-3.5 space-y-3">
             <div class="flex items-center justify-between">
               <span id="formModeTitle" class="text-xs font-extrabold text-nando-700 flex items-center gap-1">
-                <span>✏️</span><span>この日に出費を記録</span>
+                <span>✏️</span><span>出費を記録する</span>
               </span>
               <button
                 type="button"
@@ -320,13 +314,13 @@
                 onclick="resetRecordForm()"
                 class="hidden text-xs font-bold text-sabinando-500 hover:text-sabinando-800 underline cursor-pointer"
               >
-                編集をやめる
+                編集をキャンセル
               </button>
             </div>
 
             <input type="hidden" id="editingRecordId" value="" />
 
-            <!-- 日付 ＆ 金額入力 -->
+            <!-- 日付 ＆ 金額欄 -->
             <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5">
               <div class="sm:col-span-5">
                 <label for="inputDate" class="block text-[11px] font-bold text-sabinando-600 mb-1">日付</label>
@@ -340,7 +334,16 @@
               </div>
 
               <div class="sm:col-span-7">
-                <label for="inputAmount" class="block text-[11px] font-bold text-sabinando-600 mb-1">金額（円）</label>
+                <div class="flex items-center justify-between mb-1">
+                  <label for="inputAmount" class="block text-[11px] font-bold text-sabinando-600">金額（円）</label>
+                  <button
+                    type="button"
+                    onclick="toggleKeypad()"
+                    class="text-[11px] font-bold text-nando-600 hover:underline cursor-pointer"
+                  >
+                    🔢 電卓テンキー表示
+                  </button>
+                </div>
                 <div class="relative">
                   <span class="absolute left-3 top-1/2 -translate-y-1/2 text-nando-600 font-extrabold text-sm">¥</span>
                   <input
@@ -356,7 +359,7 @@
                   <button
                     type="button"
                     onclick="document.getElementById('inputAmount').value=''"
-                    title="金額をクリア"
+                    title="クリア"
                     class="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-sabinando-400 hover:text-sabinando-700 font-bold cursor-pointer"
                   >
                     ✕
@@ -365,24 +368,44 @@
               </div>
             </div>
 
-            <!-- 電卓風クイック金額加算チップ -->
-            <div class="flex flex-wrap gap-1.5">
-              <button type="button" onclick="addQuickAmount(100)" class="px-2.5 py-1 rounded-lg bg-white hover:bg-byakugun-100 border border-sabinando-200 text-[11px] font-bold text-sabinando-700 num-tabular cursor-pointer">+100</button>
-              <button type="button" onclick="addQuickAmount(500)" class="px-2.5 py-1 rounded-lg bg-white hover:bg-byakugun-100 border border-sabinando-200 text-[11px] font-bold text-sabinando-700 num-tabular cursor-pointer">+500</button>
-              <button type="button" onclick="addQuickAmount(1000)" class="px-2.5 py-1 rounded-lg bg-white hover:bg-byakugun-100 border border-sabinando-200 text-[11px] font-bold text-sabinando-700 num-tabular cursor-pointer">+1,000</button>
-              <button type="button" onclick="addQuickAmount(5000)" class="px-2.5 py-1 rounded-lg bg-white hover:bg-byakugun-100 border border-sabinando-200 text-[11px] font-bold text-sabinando-700 num-tabular cursor-pointer">+5,000</button>
+            <!-- 折りたたみ式 電卓風テンキー ＆ クイック加算チップ -->
+            <div class="space-y-2">
+              <div class="flex flex-wrap gap-1.5">
+                <button type="button" onclick="addQuickAmount(100)" class="px-2.5 py-1 rounded-lg bg-white hover:bg-byakugun-100 border border-sabinando-200 text-[11px] font-bold text-sabinando-700 num-tabular cursor-pointer">+100</button>
+                <button type="button" onclick="addQuickAmount(500)" class="px-2.5 py-1 rounded-lg bg-white hover:bg-byakugun-100 border border-sabinando-200 text-[11px] font-bold text-sabinando-700 num-tabular cursor-pointer">+500</button>
+                <button type="button" onclick="addQuickAmount(1000)" class="px-2.5 py-1 rounded-lg bg-white hover:bg-byakugun-100 border border-sabinando-200 text-[11px] font-bold text-sabinando-700 num-tabular cursor-pointer">+1,000</button>
+                <button type="button" onclick="addQuickAmount(5000)" class="px-2.5 py-1 rounded-lg bg-white hover:bg-byakugun-100 border border-sabinando-200 text-[11px] font-bold text-sabinando-700 num-tabular cursor-pointer">+5,000</button>
+              </div>
+
+              <!-- 電卓テンキーパネル（トグル表示） -->
+              <div id="calcKeypad" class="hidden grid-cols-4 gap-1.5 bg-white p-2 rounded-xl border border-sabinando-200">
+                <button type="button" onclick="pressKeypad('7')" class="py-2 rounded-lg bg-byakugun-50 hover:bg-byakugun-200 font-extrabold text-sm num-tabular cursor-pointer">7</button>
+                <button type="button" onclick="pressKeypad('8')" class="py-2 rounded-lg bg-byakugun-50 hover:bg-byakugun-200 font-extrabold text-sm num-tabular cursor-pointer">8</button>
+                <button type="button" onclick="pressKeypad('9')" class="py-2 rounded-lg bg-byakugun-50 hover:bg-byakugun-200 font-extrabold text-sm num-tabular cursor-pointer">9</button>
+                <button type="button" onclick="pressKeypad('BS')" class="py-2 rounded-lg bg-sabinando-100 hover:bg-sabinando-200 font-bold text-xs text-sabinando-700 cursor-pointer">⌫</button>
+                <button type="button" onclick="pressKeypad('4')" class="py-2 rounded-lg bg-byakugun-50 hover:bg-byakugun-200 font-extrabold text-sm num-tabular cursor-pointer">4</button>
+                <button type="button" onclick="pressKeypad('5')" class="py-2 rounded-lg bg-byakugun-50 hover:bg-byakugun-200 font-extrabold text-sm num-tabular cursor-pointer">5</button>
+                <button type="button" onclick="pressKeypad('6')" class="py-2 rounded-lg bg-byakugun-50 hover:bg-byakugun-200 font-extrabold text-sm num-tabular cursor-pointer">6</button>
+                <button type="button" onclick="pressKeypad('C')" class="py-2 rounded-lg bg-sabinando-100 hover:bg-sabinando-200 font-bold text-xs text-sabinando-700 cursor-pointer">AC</button>
+                <button type="button" onclick="pressKeypad('1')" class="py-2 rounded-lg bg-byakugun-50 hover:bg-byakugun-200 font-extrabold text-sm num-tabular cursor-pointer">1</button>
+                <button type="button" onclick="pressKeypad('2')" class="py-2 rounded-lg bg-byakugun-50 hover:bg-byakugun-200 font-extrabold text-sm num-tabular cursor-pointer">2</button>
+                <button type="button" onclick="pressKeypad('3')" class="py-2 rounded-lg bg-byakugun-50 hover:bg-byakugun-200 font-extrabold text-sm num-tabular cursor-pointer">3</button>
+                <button type="button" onclick="pressKeypad('00')" class="py-2 rounded-lg bg-byakugun-100 hover:bg-byakugun-200 font-extrabold text-xs text-nando-700 num-tabular cursor-pointer">00</button>
+                <button type="button" onclick="pressKeypad('0')" class="col-span-3 py-2 rounded-lg bg-byakugun-50 hover:bg-byakugun-200 font-extrabold text-sm num-tabular cursor-pointer">0</button>
+                <button type="button" onclick="toggleKeypad()" class="py-2 rounded-lg bg-nando-500 text-white font-bold text-xs cursor-pointer">完了</button>
+              </div>
             </div>
 
-            <!-- 出費の種類（カテゴリピル選択） -->
+            <!-- 出費の種類（カテゴリ選択ピル） -->
             <div>
               <div class="flex items-center justify-between mb-1">
-                <label class="text-[11px] font-bold text-sabinando-600">出費の種類</label>
+                <label class="text-[11px] font-bold text-sabinando-600">種類（カテゴリ）</label>
                 <button
                   type="button"
                   onclick="openManageModal()"
                   class="text-[11px] font-bold text-nando-600 hover:underline cursor-pointer"
                 >
-                  ＋ 種類を編集
+                  ＋ 種類を追加・削除
                 </button>
               </div>
               <div id="categoryPillSelector" class="flex flex-wrap gap-1.5"></div>
@@ -390,31 +413,31 @@
             </div>
 
             <!-- メモ ＆ レシート写真添付 -->
-            <div class="grid grid-cols-1 gap-2.5">
+            <div class="space-y-2.5">
               <input
                 type="text"
                 id="inputMemo"
-                maxlength="80"
+                maxlength="100"
                 placeholder="メモ（お店の名前・品目など）"
                 class="w-full px-3 py-2 rounded-xl bg-white border border-sabinando-200 focus:border-nando-500 outline-none text-xs sm:text-sm text-sabinando-800"
               />
 
-              <!-- レシートカメラ撮影＆アルバム選択ボタン -->
+              <!-- スマホ背面カメラ撮影 / アルバム選択 -->
               <div class="flex flex-wrap items-center gap-2">
-                <label class="flex-1 min-w-[120px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-white hover:bg-byakugun-100 text-nando-700 border border-byakugun-400 font-bold text-xs transition cursor-pointer">
+                <label class="flex-1 min-w-[125px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-white hover:bg-byakugun-100 text-nando-700 border border-byakugun-400 font-bold text-xs transition cursor-pointer">
                   <span>📷</span>
-                  <span>レシート撮影</span>
+                  <span>カメラで撮影</span>
                   <input type="file" accept="image/*" capture="environment" onchange="handleReceiptSelect(event)" class="hidden" />
                 </label>
 
-                <label class="flex-1 min-w-[120px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-white hover:bg-byakugun-100 text-sabinando-700 border border-sabinando-200 font-bold text-xs transition cursor-pointer">
+                <label class="flex-1 min-w-[125px] inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-white hover:bg-byakugun-100 text-sabinando-700 border border-sabinando-200 font-bold text-xs transition cursor-pointer">
                   <span>🖼️</span>
-                  <span>写真を選ぶ</span>
+                  <span>アルバムから選択</span>
                   <input type="file" accept="image/*" onchange="handleReceiptSelect(event)" class="hidden" />
                 </label>
               </div>
 
-              <!-- レシート添付プレビュー -->
+              <!-- 添付レシートプレビュー -->
               <div id="formReceiptPreviewWrap" class="hidden bg-white border border-sabinando-200 rounded-xl p-2">
                 <div class="flex items-center justify-between mb-1">
                   <span id="formReceiptInfo" class="text-[11px] text-sabinando-500 num-tabular">レシート添付済み</span>
@@ -430,7 +453,7 @@
               </div>
             </div>
 
-            <!-- 保存ボタン -->
+            <!-- 送信ボタン -->
             <button
               type="submit"
               id="submitRecordBtn"
@@ -440,10 +463,10 @@
             </button>
           </form>
 
-          <!-- 選択日の出費一覧 -->
+          <!-- 選択日の明細リスト -->
           <div class="mt-4">
             <h4 class="text-xs font-extrabold text-sabinando-600 mb-2">この日の明細一覧</h4>
-            <div id="selectedDayList" class="space-y-2.5 max-h-[420px] overflow-y-auto pr-0.5"></div>
+            <div id="selectedDayList" class="space-y-2.5 max-h-[440px] overflow-y-auto pr-0.5"></div>
           </div>
         </section>
       </div>
@@ -452,16 +475,16 @@
       <!-- 右カラム（PC 7列 / スマホ Tab2「グラフ・比較」） -->
       <!-- ================================================================= -->
       <div id="tabPanelAnalytics" class="hidden lg:block lg:col-span-7 space-y-5">
-        <!-- 1. 期間切り替え＆比較サマリーカード -->
-        <section class="bg-white border border-sabinando-200 rounded-3xl p-4 sm:p-6 shadow-card">
+        <!-- 1. 期間切り替えタブ ＆ 前期間比較カード -->
+        <section class="bg-white border border-sabinando-200 rounded-[20px] p-4 sm:p-6 shadow-card">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-4 border-b border-sabinando-100">
             <div>
-              <h2 class="text-base sm:text-lg font-extrabold text-sabinando-800 flex items-center gap-1.5">
+              <h2 class="text-base sm:text-lg font-extrabold text-sabinando-700 flex items-center gap-1.5">
                 <span>📊</span>
-                <span>期間比較・出費レポート</span>
+                <span>期間比較・支出サマリー</span>
               </h2>
               <p id="periodRangeSubtitle" class="text-xs text-sabinando-500 mt-0.5 num-tabular">
-                直近期間の集計と前回比較
+                ---
               </p>
             </div>
 
@@ -475,18 +498,18 @@
             </div>
           </div>
 
-          <!-- 3つの主要比較カード -->
+          <!-- 前期間比較カード群 -->
           <div id="comparisonCards" class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mt-4"></div>
         </section>
 
-        <!-- 2. カテゴリ別ドーナツグラフ ＆ 内訳割合リスト -->
-        <section class="bg-white border border-sabinando-200 rounded-3xl p-4 sm:p-6 shadow-card">
+        <!-- 2. 種類ごとの支出割合（ドーナツグラフ ＆ 内訳リスト） -->
+        <section class="bg-white border border-sabinando-200 rounded-[20px] p-4 sm:p-6 shadow-card">
           <div class="mb-3">
-            <h3 class="text-base font-extrabold text-sabinando-800 flex items-center gap-1.5">
+            <h3 class="text-base font-extrabold text-sabinando-700 flex items-center gap-1.5">
               <span>🍩</span>
-              <span>出費の種類ごとの内訳</span>
+              <span>種類ごとの支出割合</span>
             </h3>
-            <p class="text-xs text-sabinando-500">何にどれくらい使っているかの金額と割合（％）</p>
+            <p class="text-xs text-sabinando-500">選択期間で何にどれくらいお金を使っているかを可視化</p>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
@@ -497,18 +520,17 @@
           </div>
         </section>
 
-        <!-- 3. 期間内の推移（積み上げ棒グラフ）＆ 前期間比較グラフ -->
-        <section class="bg-white border border-sabinando-200 rounded-3xl p-4 sm:p-6 shadow-card">
+        <!-- 3. 期間内の推移・種類別内訳（積み上げ棒グラフ / 前期間比較切替） -->
+        <section class="bg-white border border-sabinando-200 rounded-[20px] p-4 sm:p-6 shadow-card">
           <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
             <div>
-              <h3 class="text-base font-extrabold text-sabinando-800 flex items-center gap-1.5">
+              <h3 class="text-base font-extrabold text-sabinando-700 flex items-center gap-1.5">
                 <span>📈</span>
                 <span id="barChartHeading">期間内の支出推移（種類別積み上げ）</span>
               </h3>
-              <p id="barChartSub" class="text-xs text-sabinando-500">日別・月別の推移を種類ごとに色分け表示</p>
+              <p id="barChartSub" class="text-xs text-sabinando-500">日別・月別の推移と種類ごとの内訳</p>
             </div>
 
-            <!-- 棒グラフ表示モード切替 -->
             <div class="flex gap-1 bg-byakugun-50 p-1 rounded-xl border border-byakugun-200 text-xs">
               <button
                 type="button"
@@ -516,7 +538,7 @@
                 onclick="setBarChartMode('trend')"
                 class="px-2.5 py-1 rounded-lg font-bold transition cursor-pointer"
               >
-                期間推移
+                積み上げ推移
               </button>
               <button
                 type="button"
@@ -524,7 +546,7 @@
                 onclick="setBarChartMode('compare')"
                 class="px-2.5 py-1 rounded-lg font-bold transition cursor-pointer"
               >
-                前回と比較
+                前期間と種類比較
               </button>
             </div>
           </div>
@@ -536,36 +558,35 @@
       </div>
 
       <!-- ================================================================= -->
-      <!-- スマホ専用 Tab3「管理・同期」パネル（PCではモーダルで表示） -->
+      <!-- スマホ専用 Tab3「種類・管理」パネル（PCではモーダル表示） -->
       <!-- ================================================================= -->
       <div id="tabPanelSettings" class="hidden lg:hidden space-y-5">
-        <section class="bg-white border border-sabinando-200 rounded-3xl p-5 shadow-card space-y-4">
-          <h2 class="text-base font-extrabold text-sabinando-800 flex items-center gap-2">
-            <span>☁️</span><span>スマホ・PC クラウド同期</span>
+        <section class="bg-white border border-sabinando-200 rounded-[20px] p-5 shadow-card space-y-3">
+          <h2 class="text-base font-extrabold text-sabinando-700 flex items-center gap-2">
+            <span>☁️</span><span>クラウド同期（Supabase）</span>
           </h2>
           <p class="text-xs text-sabinando-600 leading-relaxed">
-            Supabaseの同期設定を行うと、スマホで撮影したレシートや出費データがPCとリアルタイムで自動同期されます。
+            スマホとPCでデータを同期します。削除したデータも別端末から復活しない差分同期に対応しています。
           </p>
           <button
             type="button"
             onclick="openSyncModal()"
             class="w-full py-3 rounded-2xl bg-nando-500 hover:bg-nando-600 text-white font-extrabold text-sm shadow-xs cursor-pointer"
           >
-            ☁️ 同期設定・ログイン画面を開く
+            ☁️ 同期設定・ログインを開く
           </button>
         </section>
 
-        <!-- カテゴリ管理・バックアップ共通コンテナ（モバイル用マウント先） -->
         <div id="mobileManageMount"></div>
       </div>
     </div>
   </main>
 
   <!-- ===================================================================== -->
-  <!-- スマホ用 下部固定ナビゲーションバー（親指操作しやすい3タブ） -->
+  <!-- スマホ用 下部ナビゲーションバー（片手操作しやすい3タブ） -->
   <!-- ===================================================================== -->
   <nav
-    aria-label="メインメニュー"
+    aria-label="下部メニュー"
     class="lg:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur-md border-t border-sabinando-200 px-2 pt-1.5 pb-[calc(env(safe-area-inset-bottom,0px)+0.4rem)]"
   >
     <div class="grid grid-cols-3 gap-1 max-w-md mx-auto">
@@ -594,7 +615,7 @@
         class="mob-tab-btn py-1.5 rounded-2xl flex flex-col items-center justify-center gap-0.5 font-bold text-xs transition cursor-pointer"
       >
         <span class="text-lg leading-none">⚙️</span>
-        <span>管理・同期</span>
+        <span>種類・管理</span>
       </button>
     </div>
   </nav>
@@ -609,10 +630,10 @@
     aria-modal="true"
     aria-labelledby="syncModalTitle"
   >
-    <div class="bg-white border border-sabinando-200 rounded-3xl w-full max-w-lg p-5 sm:p-6 shadow-modal animate-pop my-auto">
+    <div class="bg-white border border-sabinando-200 rounded-[20px] w-full max-w-lg p-5 sm:p-6 shadow-modal animate-pop my-auto">
       <div class="flex items-center justify-between pb-3 border-b border-sabinando-100">
         <h3 id="syncModalTitle" class="text-lg font-extrabold text-sabinando-800 flex items-center gap-2">
-          <span>☁️</span><span>クラウド同期設定（Supabase）</span>
+          <span>☁️</span><span>クラウド同期設定</span>
         </h3>
         <button
           type="button"
@@ -623,82 +644,91 @@
         </button>
       </div>
 
-      <!-- 現在の接続状態パネル -->
+      <!-- 現在の同期ステータスバナー -->
       <div id="syncModalAccountBanner" class="mt-4 rounded-2xl p-3.5 bg-byakugun-50 border border-byakugun-300 text-xs sm:text-sm"></div>
 
       <!-- 接続＆ログインフォーム -->
       <form id="syncConfigForm" onsubmit="handleSyncLogin(event)" class="mt-4 space-y-3.5">
         <div>
           <label for="supaUrlInput" class="block text-xs font-bold text-sabinando-700 mb-1">
-            1. Supabase Project URL
+            Project URL
           </label>
           <input
             type="url"
             id="supaUrlInput"
             required
             placeholder="https://qvsddtiqfarwipuceptd.supabase.co"
-            class="w-full px-3.5 py-2 rounded-xl bg-byakugun-50/60 border border-sabinando-200 focus:border-nando-500 outline-none text-xs sm:text-sm font-medium text-sabinando-800"
+            value="https://qvsddtiqfarwipuceptd.supabase.co"
+            class="w-full px-3.5 py-2 rounded-xl bg-byakugun-50/70 border border-sabinando-200 focus:border-nando-500 outline-none text-xs sm:text-sm font-medium text-sabinando-800"
           />
         </div>
 
         <div>
           <label for="supaKeyInput" class="block text-xs font-bold text-sabinando-700 mb-1">
-            2. API Key（Publishable key または anon public）
+            API Key（Publishable / anon key）
           </label>
           <input
             type="password"
             id="supaKeyInput"
             required
             placeholder="sb_publishable_... または eyJ..."
-            class="w-full px-3.5 py-2 rounded-xl bg-byakugun-50/60 border border-sabinando-200 focus:border-nando-500 outline-none text-xs sm:text-sm font-medium text-sabinando-800"
+            class="w-full px-3.5 py-2 rounded-xl bg-byakugun-50/70 border border-sabinando-200 focus:border-nando-500 outline-none text-xs sm:text-sm font-medium text-sabinando-800"
           />
           <p class="text-[11px] text-sabinando-500 mt-1">
-            ※入力したキーはこの端末のブラウザ内だけに保存され、GitHub上には公開されません。
+            ※URLとAPIキーはこのブラウザの localStorage のみに保存されます。
           </p>
         </div>
 
-        <div id="syncAuthFields" class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-          <div>
-            <label for="supaEmailInput" class="block text-xs font-bold text-sabinando-700 mb-1">
-              3. ログイン用メールアドレス
-            </label>
-            <input
-              type="email"
-              id="supaEmailInput"
-              placeholder="you@example.com"
-              class="w-full px-3.5 py-2 rounded-xl bg-byakugun-50/60 border border-sabinando-200 focus:border-nando-500 outline-none text-xs sm:text-sm text-sabinando-800"
-            />
+        <!-- 未ログイン時のみ表示するメール・パスワード欄 -->
+        <div id="syncAuthFields" class="space-y-3 pt-1">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label for="supaEmailInput" class="block text-xs font-bold text-sabinando-700 mb-1">
+                メールアドレス
+              </label>
+              <input
+                type="email"
+                id="supaEmailInput"
+                placeholder="you@example.com"
+                class="w-full px-3.5 py-2 rounded-xl bg-byakugun-50/70 border border-sabinando-200 focus:border-nando-500 outline-none text-xs sm:text-sm text-sabinando-800"
+              />
+            </div>
+            <div>
+              <label for="supaPassInput" class="block text-xs font-bold text-sabinando-700 mb-1">
+                パスワード
+              </label>
+              <input
+                type="password"
+                id="supaPassInput"
+                placeholder="パスワード"
+                class="w-full px-3.5 py-2 rounded-xl bg-byakugun-50/70 border border-sabinando-200 focus:border-nando-500 outline-none text-xs sm:text-sm text-sabinando-800"
+              />
+            </div>
           </div>
-          <div>
-            <label for="supaPassInput" class="block text-xs font-bold text-sabinando-700 mb-1">
-              4. パスワード
-            </label>
-            <input
-              type="password"
-              id="supaPassInput"
-              placeholder="Supabaseで作成したパスワード"
-              class="w-full px-3.5 py-2 rounded-xl bg-byakugun-50/60 border border-sabinando-200 focus:border-nando-500 outline-none text-xs sm:text-sm text-sabinando-800"
-            />
-          </div>
+
+          <label class="flex items-start gap-2 text-xs text-sabinando-600 bg-byakugun-50/80 p-2.5 rounded-xl border border-sabinando-100 cursor-pointer">
+            <input type="checkbox" id="uploadLocalBeforeLoginChk" checked class="mt-0.5 accent-nando-500" />
+            <span>未ログイン中にこの端末で新規作成したデータがあればクラウドへ引き継ぐ（他アカウントの同期済みデータは混ざりません）</span>
+          </label>
         </div>
 
-        <!-- アクションボタン群 -->
+        <!-- ボタン群 -->
         <div class="flex flex-wrap items-center gap-2 pt-2">
           <button
             type="submit"
             id="btnConnectLogin"
             class="flex-1 min-w-[180px] py-2.5 px-4 rounded-2xl bg-nando-500 hover:bg-nando-600 text-white font-extrabold text-xs sm:text-sm shadow-xs transition cursor-pointer"
           >
-            接続してログイン＆同期する
+            ログインして同期を開始
           </button>
 
           <button
             type="button"
             id="btnManualSync"
-            onclick="syncWithCloud(true)"
-            class="hidden py-2.5 px-4 rounded-2xl bg-byakugun-100 hover:bg-byakugun-200 text-nando-700 border border-byakugun-400 font-bold text-xs sm:text-sm transition cursor-pointer"
+            onclick="syncWithCloud({ showToastOnSuccess: true })"
+            class="hidden flex-1 py-2.5 px-4 rounded-2xl bg-nando-500 hover:bg-nando-600 text-white font-extrabold text-xs sm:text-sm shadow-xs transition cursor-pointer"
           >
-            🔄 今すぐ手動同期
+            🔄 今すぐ同期
           </button>
 
           <button
@@ -712,18 +742,27 @@
         </div>
       </form>
 
-      <!-- かんたん手順ガイド -->
-      <div class="mt-5 pt-4 border-t border-sabinando-100 text-xs text-sabinando-600 space-y-1.5 leading-relaxed">
-        <div class="font-extrabold text-sabinando-700">💡 使いかたメモ</div>
-        <p>・Supabaseの「API Keys」でコピーした公開キー（Publishable / anon）と、「Authentication → Users」で作成したメールアドレス・パスワードを入力します。</p>
-        <p>・一度ログインすると、次回からはアプリを開くだけでスマホとPCのデータ・レシート写真が自動で同期されます。</p>
-        <p>・ログイン前に自分で記録したデータがある場合も、消えずにクラウド側と自動で統合されます。</p>
+      <!-- ログイン中に使える強制リセット取得ボタン（古いキャッシュを一掃したい時用） -->
+      <div id="forcePullSection" class="hidden mt-4 pt-3.5 border-t border-sabinando-100">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-sabinando-50 rounded-2xl p-3 border border-sabinando-200">
+          <div class="text-xs text-sabinando-600">
+            <strong class="text-sabinando-800 block">クラウドの最新データで端末を上書き</strong>
+            端末内の未送信キャッシュを破棄し、クラウド上のデータと完全に一致させます。
+          </div>
+          <button
+            type="button"
+            onclick="confirmForceOverwriteFromCloud()"
+            class="px-3 py-2 rounded-xl bg-white hover:bg-byakugun-100 text-nando-700 border border-sabinando-300 font-bold text-xs shrink-0 transition cursor-pointer"
+          >
+            強制再取得
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- ===================================================================== -->
-  <!-- モーダル2：⚙️ カテゴリ管理＆バックアップモーダル（PC用・スマホ共通部品） -->
+  <!-- モーダル2：⚙️ カテゴリ管理＆バックアップモーダル（PC用） -->
   <!-- ===================================================================== -->
   <div
     id="manageModal"
@@ -732,10 +771,10 @@
     aria-modal="true"
     aria-labelledby="manageModalTitle"
   >
-    <div class="bg-white border border-sabinando-200 rounded-3xl w-full max-w-lg p-5 sm:p-6 shadow-modal animate-pop my-auto">
+    <div class="bg-white border border-sabinando-200 rounded-[20px] w-full max-w-lg p-5 sm:p-6 shadow-modal animate-pop my-auto">
       <div class="flex items-center justify-between pb-3 border-b border-sabinando-100 mb-4">
         <h3 id="manageModalTitle" class="text-lg font-extrabold text-sabinando-800 flex items-center gap-2">
-          <span>⚙️</span><span>出費の種類・データ管理</span>
+          <span>⚙️</span><span>種類・バックアップ管理</span>
         </h3>
         <button
           type="button"
@@ -759,7 +798,7 @@
     role="dialog"
     aria-modal="true"
   >
-    <div onclick="event.stopPropagation()" class="bg-white border border-sabinando-200 rounded-3xl max-w-xl w-full p-4 sm:p-5 shadow-modal animate-pop">
+    <div onclick="event.stopPropagation()" class="bg-white border border-sabinando-200 rounded-[20px] max-w-xl w-full p-4 sm:p-5 shadow-modal animate-pop">
       <div class="flex items-center justify-between mb-3">
         <div>
           <h4 id="lightboxTitle" class="text-sm sm:text-base font-extrabold text-sabinando-800">レシート写真</h4>
@@ -780,7 +819,7 @@
   </div>
 
   <!-- ===================================================================== -->
-  <!-- モーダル4：確認ダイアログ（confirm() を使わない安全なカスタム確認UI） -->
+  <!-- モーダル4：カスタム確認ダイアログ（confirm() 不使用） -->
   <!-- ===================================================================== -->
   <div
     id="confirmModal"
@@ -788,7 +827,7 @@
     role="dialog"
     aria-modal="true"
   >
-    <div class="bg-white border border-sabinando-200 rounded-3xl max-w-sm w-full p-5 shadow-modal animate-pop">
+    <div class="bg-white border border-sabinando-200 rounded-[20px] max-w-sm w-full p-5 shadow-modal animate-pop">
       <h4 id="confirmTitle" class="text-base font-extrabold text-sabinando-800">確認</h4>
       <p id="confirmMessage" class="text-xs sm:text-sm text-sabinando-600 mt-2 leading-relaxed"></p>
       <div class="flex justify-end gap-2 mt-5">
@@ -811,113 +850,192 @@
   </div>
 
   <!-- ===================================================================== -->
-  <!-- アプリケーション JavaScript -->
+  <!-- アプリケーション ロジック -->
   <!-- ===================================================================== -->
   <script>
     /**
-     * 定数・ストレージキー定義
+     * ストレージキー・初期定数
+     * 旧バージョンのキー（kakeibo_v2_records等）からの安全なマイグレーションにも対応
      */
     const DEFAULT_SUPABASE_URL = 'https://qvsddtiqfarwipuceptd.supabase.co';
-    const LS_RECORDS_KEY = 'kakeibo_v2_records';
-    const LS_CATEGORIES_KEY = 'kakeibo_v2_categories';
-    const LS_SUPA_CONFIG_KEY = 'kakeibo_v2_supa_config';
-    const LS_INITIALIZED_KEY = 'kakeibo_v2_initialized';
+    const LS_RECORDS_KEY = 'kakeibo_v3_records';
+    const LS_CATEGORIES_KEY = 'kakeibo_v3_categories';
+    const LS_PENDING_DELETES_KEY = 'kakeibo_v3_pending_deletes';
+    const LS_SUPA_CONFIG_KEY = 'kakeibo_v3_supa_config';
+    const LS_LAST_USER_ID_KEY = 'kakeibo_v3_last_user_id';
+    const LS_CATS_DIRTY_KEY = 'kakeibo_v3_cats_dirty';
+
+    // 旧バージョンキー（移行参照用）
+    const LEGACY_RECORDS_KEYS = ['kakeibo_v2_records', 'kakeibo_cool_expenses_v1'];
+    const LEGACY_SUPA_CONFIG_KEY = 'kakeibo_v2_supa_config';
 
     /**
-     * 初期カテゴリ定義（白群・納戸色・錆納戸と調和する寒色グラデーションパレット）
+     * 初期カテゴリ定義（食費・日用品・交通費・交際費・趣味・娯楽・水道光熱費・通信費・医療費・その他）
+     * 白群(#83ccd2)・納戸色(#008899)・錆納戸(#455765)と調和する寒色パレット
      */
     const DEFAULT_CATEGORIES = [
       { id: 'food', name: '食費', emoji: '🍙', color: '#008899' },
-      { id: 'daily', name: '日用品', emoji: '🧻', color: '#3BA3B0' },
+      { id: 'daily', name: '日用品', emoji: '🧻', color: '#5eb8c0' },
       { id: 'transport', name: '交通費', emoji: '🚃', color: '#455765' },
-      { id: 'social', name: '交際費', emoji: '☕', color: '#2E6F8E' },
-      { id: 'hobby', name: '趣味・娯楽', emoji: '📚', color: '#5A8F99' },
-      { id: 'medical', name: '医療費', emoji: '🌿', color: '#4D8B7C' },
-      { id: 'utility', name: '光熱費・通信', emoji: '💡', color: '#1F5E73' },
-      { id: 'other', name: 'その他', emoji: '📦', color: '#83CCD2' },
+      { id: 'social', name: '交際費', emoji: '☕', color: '#2b6cb0' },
+      { id: 'hobby', name: '趣味・娯楽', emoji: '📚', color: '#3b8ea5' },
+      { id: 'utility', name: '水道光熱費', emoji: '💧', color: '#1d5e6e' },
+      { id: 'telecom', name: '通信費', emoji: '📱', color: '#5a768c' },
+      { id: 'medical', name: '医療費', emoji: '🌿', color: '#3d8b7d' },
+      { id: 'other', name: 'その他', emoji: '📦', color: '#83ccd2' },
     ];
 
     const CATEGORY_COLOR_PALETTE = [
-      '#008899', '#83CCD2', '#455765', '#2E6F8E', '#4D8B7C',
-      '#3BA3B0', '#1F5E73', '#5C768D', '#2A9D8F', '#6B8E9B',
+      '#008899', '#83ccd2', '#455765', '#2b6cb0', '#3d8b7d',
+      '#5eb8c0', '#1d5e6e', '#5a768c', '#2a9d8f', '#6c8ea4',
     ];
-    const CATEGORY_EMOJI_PALETTE = ['🍙', '🧻', '🚃', '☕', '📚', '🌿', '💡', '📦', '🐾', '👗', '🎁', '🛒', '🏠', '🍙', '✨', '💼'];
+    const CATEGORY_EMOJI_PALETTE = ['🍙', '🧻', '🚃', '☕', '📚', '💧', '📱', '🌿', '📦', '🐾', '👗', '🎁', '🛒', '🏠', '✨', '💼'];
 
     /**
-     * アプリ全体の状態
+     * アプリ状態管理オブジェクト
+     * 各レコード構造:
+     * {
+     *   id: string,
+     *   date: 'YYYY-MM-DD',
+     *   amount: number,
+     *   category: string,
+     *   memo: string,
+     *   receipt_url: string,      // 'storage:userId/recordId.jpg' | 'data:image/...' | ''
+     *   updated_at: ISOString,
+     *   _synced: boolean,         // クラウドと同期済みかどうか
+     *   _dirty: boolean,          // 新規作成・編集されて未アップロードの変更があるか
+     *   _ownerUserId: string|null // どのログインユーザーのデータか（アカウント混入防止用）
+     * }
+     *
+     * pendingDeletes 構造:
+     * Array<{ id: string, receipt_url: string }>
      */
-    const todayDate = new Date();
+    const nowInit = new Date();
     const state = {
       records: [],
       categories: [...DEFAULT_CATEGORIES],
-      viewYear: todayDate.getFullYear(),
-      viewMonth: todayDate.getMonth(),
-      selectedDate: toDateStr(todayDate),
-      period: '1m',           // '1w' | '1m' | '3m' | '6m' | '1y'
-      barMode: 'trend',       // 'trend' (積み上げ推移) | 'compare' (前回比較)
-      mobileTab: 'calendar',  // 'calendar' | 'analytics' | 'settings'
-      // フォーム添付中レシートデータ
+      categoriesDirty: false,
+      pendingDeletes: [],
+      lastSyncedUserId: null,
+
+      viewYear: nowInit.getFullYear(),
+      viewMonth: nowInit.getMonth(),
+      selectedDate: toDateStr(nowInit),
+      period: '1m',
+      barMode: 'trend',
+      mobileTab: 'calendar',
+
+      // フォームの一時レシート保持
       draftReceiptDataUrl: '',
       draftReceiptBlob: null,
       draftReceiptLabel: '',
-      // 新規カテゴリ作成用選択状態
+
+      // カテゴリ作成ピッカー用
       newCatEmoji: '🐾',
       newCatColor: '#008899',
+
       // Supabase関連
       supaUrl: DEFAULT_SUPABASE_URL,
       supaKey: '',
       supabase: null,
       user: null,
+      realtimeChannel: null,
       isSyncing: false,
-      signedUrlCache: {},     // storagePath -> signedUrl のメモリキャッシュ
+      lastAutoSyncAt: 0,
+      signedUrlCache: {}, // storagePath -> { url, expiresAt }
     };
 
-    let doughnutChart = null;
-    let barChart = null;
-    let pendingConfirmAction = null;
+    let doughnutChartInstance = null;
+    let barChartInstance = null;
+    let pendingConfirmCallback = null;
 
     /* =====================================================================
-     * PWA対応：動的SVGアイコンとWeb App Manifestのセットアップ
+     * PWA対応（インラインSVGアイコン・Manifest・Service Worker登録）
      * ===================================================================== */
-    function setupPWA() {
+    function initPWA() {
       const iconSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
-        <rect width="192" height="192" rx="44" fill="#008899"/>
-        <rect x="18" y="18" width="156" height="156" rx="34" fill="#83CCD2" fill-opacity="0.22"/>
-        <path d="M56 142a16 16 0 0 1 16-16h68V46H72a16 16 0 0 0-16 16v80z" fill="#FFFFFF"/>
-        <path d="M56 142a16 16 0 0 0 16 16h68v-32H72a16 16 0 0 0-16 16z" fill="#E3F2F4"/>
-        <rect x="78" y="68" width="44" height="10" rx="5" fill="#008899"/>
-        <rect x="78" y="90" width="32" height="10" rx="5" fill="#455765"/>
+        <rect width="192" height="192" rx="42" fill="#008899"/>
+        <rect x="16" y="16" width="160" height="160" rx="32" fill="#83ccd2" fill-opacity="0.22"/>
+        <path d="M56 142a16 16 0 0 1 16-16h68V46H72a16 16 0 0 0-16 16v80z" fill="#ffffff"/>
+        <path d="M56 142a16 16 0 0 0 16 16h68v-32H72a16 16 0 0 0-16 16z" fill="#e6f3f5"/>
+        <rect x="76" y="68" width="46" height="10" rx="5" fill="#008899"/>
+        <rect x="76" y="90" width="32" height="10" rx="5" fill="#455765"/>
       </svg>`;
       const iconDataUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(iconSvg);
 
-      const appleIcon = document.createElement('link');
-      appleIcon.rel = 'apple-touch-icon';
-      appleIcon.href = iconDataUrl;
-      document.head.appendChild(appleIcon);
+      const appleLink = document.createElement('link');
+      appleLink.rel = 'apple-touch-icon';
+      appleLink.href = iconDataUrl;
+      document.head.appendChild(appleLink);
 
-      const favIcon = document.createElement('link');
-      favIcon.rel = 'icon';
-      favIcon.href = iconDataUrl;
-      document.head.appendChild(favIcon);
+      const favLink = document.createElement('link');
+      favLink.rel = 'icon';
+      favLink.href = iconDataUrl;
+      document.head.appendChild(favLink);
 
-      const manifest = {
+      const manifestObj = {
         name: '家計簿',
         short_name: '家計簿',
-        start_url: './',
+        description: 'カレンダー・レシート記録・期間比較グラフ対応の家計簿',
+        start_url: location.href.split('#')[0],
         display: 'standalone',
-        background_color: '#F2F8F9',
+        background_color: '#f4f8f9',
         theme_color: '#008899',
-        icons: [{ src: iconDataUrl, sizes: '192x192 512x512', type: 'image/svg+xml', purpose: 'any maskable' }],
+        icons: [
+          {
+            src: iconDataUrl,
+            sizes: '192x192 512x512',
+            type: 'image/svg+xml',
+            purpose: 'any maskable',
+          },
+        ],
       };
-      const manifestBlob = new Blob([JSON.stringify(manifest)], { type: 'application/manifest+json' });
-      const manifestLink = document.createElement('link');
-      manifestLink.rel = 'manifest';
-      manifestLink.href = URL.createObjectURL(manifestBlob);
-      document.head.appendChild(manifestLink);
+
+      try {
+        const manifestBlob = new Blob([JSON.stringify(manifestObj)], { type: 'application/manifest+json' });
+        const manifestLink = document.createElement('link');
+        manifestLink.rel = 'manifest';
+        manifestLink.href = URL.createObjectURL(manifestBlob);
+        document.head.appendChild(manifestLink);
+      } catch (e) {
+        console.warn('Manifest生成スキップ:', e);
+      }
+
+      // Service Worker 登録（HTTPS / GitHub Pages環境で動作し、制限環境では安全に無視）
+      if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+        const swScript = `
+          const CACHE_NAME = 'kakeibo-shell-v3';
+          self.addEventListener('install', (e) => self.skipWaiting());
+          self.addEventListener('activate', (e) => e.waitUntil(self.clients.claim()));
+          self.addEventListener('fetch', (event) => {
+            if (event.request.method !== 'GET') return;
+            const url = event.request.url;
+            if (url.includes('supabase.co')) return;
+            event.respondWith(
+              fetch(event.request)
+                .then((res) => {
+                  const clone = res.clone();
+                  caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone)).catch(() => {});
+                  return res;
+                })
+                .catch(() => caches.match(event.request))
+            );
+          });
+        `;
+        try {
+          const swBlob = new Blob([swScript], { type: 'application/javascript' });
+          const swUrl = URL.createObjectURL(swBlob);
+          navigator.serviceWorker.register(swUrl).catch(() => {
+            // Blob URL SW 非対応ブラウザではエラーを出さず静かにスキップ
+          });
+        } catch (e) {
+          // 無視
+        }
+      }
     }
 
     /* =====================================================================
-     * 日付・フォーマット用ユーティリティ
+     * 日付・文字列ユーティリティ
      * ===================================================================== */
     function toDateStr(d) {
       const y = d.getFullYear();
@@ -927,28 +1045,28 @@
     }
 
     function parseDateStr(str) {
-      const [y, m, d] = String(str).split('-').map(Number);
-      return new Date(y, (m || 1) - 1, d || 1);
+      const parts = String(str || '').split('-').map(Number);
+      return new Date(parts[0] || 2026, (parts[1] || 1) - 1, parts[2] || 1);
     }
 
-    function shiftDays(d, delta) {
-      const copy = new Date(d.getFullYear(), d.getMonth(), d.getDate());
-      copy.setDate(copy.getDate() + delta);
-      return copy;
+    function shiftDays(dateObj, deltaDays) {
+      const d = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate());
+      d.setDate(d.getDate() + deltaDays);
+      return d;
     }
 
-    function formatYen(num) {
-      return '¥' + Math.round(Number(num) || 0).toLocaleString('ja-JP');
+    function formatYen(amount) {
+      return '¥' + Math.round(Number(amount) || 0).toLocaleString('ja-JP');
     }
 
-    function formatFullJPDate(dateStr) {
+    function formatJPDateWithDow(dateStr) {
       const d = parseDateStr(dateStr);
-      const w = ['日', '月', '火', '水', '木', '金', '土'][d.getDay()];
-      return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${w}）`;
+      const dow = ['日', '月', '火', '水', '木', '金', '土'][d.getDay()];
+      return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${dow}）`;
     }
 
-    function escapeHtml(str) {
-      return String(str ?? '')
+    function escapeHtml(val) {
+      return String(val ?? '')
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
@@ -959,24 +1077,40 @@
     function getCategory(catId) {
       return (
         state.categories.find((c) => c.id === catId) ||
-        state.categories.find((c) => c.id === 'other') ||
-        { id: 'other', name: 'その他', emoji: '📦', color: '#83CCD2' }
+        state.categories.find((c) => c.id === 'other') || {
+          id: 'other',
+          name: 'その他',
+          emoji: '📦',
+          color: '#83ccd2',
+        }
       );
+    }
+
+    /**
+     * Storageパス文字列の正規化（'storage:uid/id.jpg' と 'storage://uid/id.jpg' の両方に対応）
+     */
+    function extractStoragePath(receiptUrl) {
+      if (!receiptUrl || typeof receiptUrl !== 'string') return null;
+      if (receiptUrl.startsWith('storage://')) return receiptUrl.slice('storage://'.length);
+      if (receiptUrl.startsWith('storage:')) return receiptUrl.slice('storage:'.length);
+      // もし 'uuid/rec-xxx.jpg' のように直接パスが入っている場合も判定
+      if (/^[0-9a-f-]{30,}\/.+\.(jpg|jpeg|png|webp)$/i.test(receiptUrl)) return receiptUrl;
+      return null;
     }
 
     /* =====================================================================
      * トースト通知 ＆ カスタム確認モーダル
      * ===================================================================== */
-    function showToast(msg, type = 'info') {
+    function showToast(message, type = 'info') {
       const container = document.getElementById('toastContainer');
       const el = document.createElement('div');
-      const styleClass =
+      const cls =
         type === 'error'
           ? 'bg-sabinando-800 text-white border border-nando-400'
           : 'bg-nando-700 text-white border border-byakugun-400';
 
-      el.className = `${styleClass} px-4 py-2.5 rounded-2xl shadow-modal text-xs sm:text-sm font-bold flex items-center gap-2 animate-pop`;
-      el.innerHTML = `<span>${type === 'error' ? '⚠️' : '✨'}</span><span>${escapeHtml(msg)}</span>`;
+      el.className = `${cls} px-4 py-2.5 rounded-2xl shadow-modal text-xs sm:text-sm font-bold flex items-center gap-2 animate-pop`;
+      el.innerHTML = `<span>${type === 'error' ? '⚠️' : '✨'}</span><span>${escapeHtml(message)}</span>`;
       container.appendChild(el);
 
       setTimeout(() => {
@@ -984,13 +1118,13 @@
         el.style.transform = 'translateY(-6px)';
         el.style.transition = 'all 0.22s ease';
         setTimeout(() => el.remove(), 240);
-      }, 2800);
+      }, 2700);
     }
 
-    function openConfirmModal(title, message, onConfirm) {
+    function openConfirmModal(title, message, onOk) {
       document.getElementById('confirmTitle').textContent = title;
       document.getElementById('confirmMessage').textContent = message;
-      pendingConfirmAction = onConfirm;
+      pendingConfirmCallback = onOk;
       const modal = document.getElementById('confirmModal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
@@ -1000,253 +1134,310 @@
       const modal = document.getElementById('confirmModal');
       modal.classList.add('hidden');
       modal.classList.remove('flex');
-      pendingConfirmAction = null;
+      pendingConfirmCallback = null;
     }
 
     document.getElementById('confirmOkBtn').addEventListener('click', () => {
-      const fn = pendingConfirmAction;
+      const fn = pendingConfirmCallback;
       closeConfirmModal();
       if (typeof fn === 'function') fn();
     });
 
     /* =====================================================================
-     * 初回見本（サンプル）データの生成（isSample: true 付き）
+     * ローカルストレージの読み込み・保存・旧バージョンからの安全な移行
      * ===================================================================== */
-    function buildSampleReceiptSvg(shop, dateText, lines, total) {
-      const rows = lines
-        .map(
-          (l, i) =>
-            `<text x="22" y="${108 + i * 26}" font-size="14" fill="#232F38">${escapeHtml(l.name)}</text>
-             <text x="298" y="${108 + i * 26}" text-anchor="end" font-size="14" font-weight="bold" fill="#455765">${formatYen(l.price)}</text>`
-        )
-        .join('');
-      const h = 155 + lines.length * 26;
-      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="320" height="${h}" viewBox="0 0 320 ${h}">
-        <rect width="320" height="${h}" rx="14" fill="#F2F8F9" stroke="#83CCD2" stroke-width="2"/>
-        <text x="160" y="38" text-anchor="middle" font-size="18" font-weight="bold" fill="#008899">${escapeHtml(shop)}</text>
-        <text x="160" y="60" text-anchor="middle" font-size="12" fill="#455765">${escapeHtml(dateText)}</text>
-        <line x1="18" y1="76" x2="302" y2="76" stroke="#83CCD2" stroke-dasharray="4,4"/>
-        ${rows}
-        <line x1="18" y1="${h - 46}" x2="302" y2="${h - 46}" stroke="#455765"/>
-        <text x="22" y="${h - 20}" font-size="16" font-weight="bold" fill="#232F38">合計</text>
-        <text x="298" y="${h - 20}" text-anchor="end" font-size="18" font-weight="bold" fill="#008899">${formatYen(total)}</text>
-      </svg>`;
-      return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
-    }
-
-    function createSampleRecords() {
-      const now = new Date();
-      const d0 = toDateStr(now);
-      const d1 = toDateStr(shiftDays(now, -1));
-      const d3 = toDateStr(shiftDays(now, -3));
-      const d9 = toDateStr(shiftDays(now, -9));
-      const d18 = toDateStr(shiftDays(now, -18));
-      const d38 = toDateStr(shiftDays(now, -38));
-      const d75 = toDateStr(shiftDays(now, -75));
-      const d140 = toDateStr(shiftDays(now, -140));
-      const d240 = toDateStr(shiftDays(now, -240));
-
-      const sampleReceipt = buildSampleReceiptSvg('フレッシュマート白群', formatFullJPDate(d0), [
-        { name: '季節の野菜セット', price: 580 },
-        { name: '牛乳・たまご', price: 540 },
-        { name: 'お惣菜・豆腐', price: 460 },
-      ], 1580);
-
-      const iso = new Date().toISOString();
-      return [
-        { id: 'sample-1', date: d0, amount: 1580, category: 'food', memo: '【見本】スーパーで食材（レシート付）', receipt_url: sampleReceipt, updated_at: iso, isSample: true },
-        { id: 'sample-2', date: d1, amount: 520, category: 'transport', memo: '【見本】電車・バス移動', receipt_url: '', updated_at: iso, isSample: true },
-        { id: 'sample-3', date: d3, amount: 1980, category: 'daily', memo: '【見本】洗剤・日用品まとめ買い', receipt_url: '', updated_at: iso, isSample: true },
-        { id: 'sample-4', date: d9, amount: 2400, category: 'social', memo: '【見本】友人とカフェランチ', receipt_url: '', updated_at: iso, isSample: true },
-        { id: 'sample-5', date: d18, amount: 11200, category: 'utility', memo: '【見本】電気・インターネット代', receipt_url: '', updated_at: iso, isSample: true },
-        { id: 'sample-6', date: d38, amount: 16400, category: 'food', memo: '【見本】先月の食費まとめ', receipt_url: '', updated_at: iso, isSample: true },
-        { id: 'sample-7', date: d75, amount: 4200, category: 'hobby', memo: '【見本】書籍・映画鑑賞', receipt_url: '', updated_at: iso, isSample: true },
-        { id: 'sample-8', date: d140, amount: 28500, category: 'food', memo: '【見本】数カ月前の食費記録', receipt_url: '', updated_at: iso, isSample: true },
-        { id: 'sample-9', date: d240, amount: 31000, category: 'utility', memo: '【見本】半年前の光熱・通信費', receipt_url: '', updated_at: iso, isSample: true },
-      ];
-    }
-
-    function confirmClearSampleData() {
-      openConfirmModal(
-        '見本データを削除しますか？',
-        '最初から入っている見本データだけを一括削除します。ご自身で入力したデータは消えません。',
-        () => {
-          state.records = state.records.filter((r) => !r.isSample);
-          saveLocalRecords();
-          renderAll();
-          showToast('見本データを削除しました');
-        }
-      );
-    }
-
-    /* =====================================================================
-     * ローカルストレージ読み書き
-     * ===================================================================== */
-    function loadLocalData() {
+    function loadLocalState() {
+      // 1. Supabase URL / Key の復元（旧キーからも引き継ぎ）
       try {
-        const rawCats = localStorage.getItem(LS_CATEGORIES_KEY);
-        if (rawCats) {
-          const parsed = JSON.parse(rawCats);
-          if (Array.isArray(parsed) && parsed.length > 0) state.categories = parsed;
-        }
-      } catch (e) {
-        console.warn('カテゴリ読み込みエラー:', e);
-      }
-
-      try {
-        const initialized = localStorage.getItem(LS_INITIALIZED_KEY);
-        const rawRecs = localStorage.getItem(LS_RECORDS_KEY);
-        if (rawRecs) {
-          state.records = JSON.parse(rawRecs);
-        } else if (!initialized) {
-          state.records = createSampleRecords();
-          localStorage.setItem(LS_INITIALIZED_KEY, '1');
-          saveLocalRecords();
-        }
-      } catch (e) {
-        console.warn('記録読み込みエラー:', e);
-        state.records = [];
-      }
-
-      try {
-        const rawSupa = localStorage.getItem(LS_SUPA_CONFIG_KEY);
-        if (rawSupa) {
-          const cfg = JSON.parse(rawSupa);
+        const rawCfg = localStorage.getItem(LS_SUPA_CONFIG_KEY) || localStorage.getItem(LEGACY_SUPA_CONFIG_KEY);
+        if (rawCfg) {
+          const cfg = JSON.parse(rawCfg);
           if (cfg.url) state.supaUrl = cfg.url;
           if (cfg.key) state.supaKey = cfg.key;
+          localStorage.setItem(LS_SUPA_CONFIG_KEY, JSON.stringify({ url: state.supaUrl, key: state.supaKey }));
         }
       } catch (e) {
         console.warn('同期設定読み込みエラー:', e);
       }
+
+      // 2. 前回同期ユーザーID
+      state.lastSyncedUserId = localStorage.getItem(LS_LAST_USER_ID_KEY) || null;
+      state.categoriesDirty = localStorage.getItem(LS_CATS_DIRTY_KEY) === '1';
+
+      // 3. カテゴリの復元
+      try {
+        const rawCats = localStorage.getItem(LS_CATEGORIES_KEY) || localStorage.getItem('kakeibo_v2_categories');
+        if (rawCats) {
+          const parsedCats = JSON.parse(rawCats);
+          if (Array.isArray(parsedCats) && parsedCats.length > 0) {
+            state.categories = parsedCats;
+          }
+        }
+      } catch (e) {
+        console.warn('カテゴリ復元エラー:', e);
+      }
+
+      // 4. 削除待ちキュー（pendingDeletes）の復元
+      try {
+        const rawDel = localStorage.getItem(LS_PENDING_DELETES_KEY);
+        if (rawDel) {
+          const parsedDel = JSON.parse(rawDel);
+          if (Array.isArray(parsedDel)) state.pendingDeletes = parsedDel;
+        }
+      } catch (e) {
+        state.pendingDeletes = [];
+      }
+
+      // 5. 出費レコードの復元（サンプルデータは自動投入しない！）
+      try {
+        const rawV3 = localStorage.getItem(LS_RECORDS_KEY);
+        if (rawV3 !== null) {
+          const parsed = JSON.parse(rawV3);
+          state.records = Array.isArray(parsed) ? normalizeRecordsArray(parsed, false) : [];
+        } else {
+          // v3初回起動時：もしv2のローカルデータがあれば移行する
+          // 重要：旧バージョンデータ（_dirty未定義）は「スマホで消したデータの再アップロード復活」を防ぐため
+          //       _dirty: false として取り込み、ログイン中ならクラウド側の最新データを正(Source of Truth)にする！
+          let migrated = [];
+          for (const legacyKey of LEGACY_RECORDS_KEYS) {
+            const rawLegacy = localStorage.getItem(legacyKey);
+            if (rawLegacy) {
+              const legacyArr = JSON.parse(rawLegacy);
+              if (Array.isArray(legacyArr) && legacyArr.length > 0) {
+                migrated = legacyArr
+                  .filter((r) => !r.isSample && !String(r.id || '').startsWith('sample-') && !String(r.id || '').startsWith('exp-sample-'))
+                  .map((r) => ({
+                    id: r.id || 'rec-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+                    date: r.date,
+                    amount: Math.round(Number(r.amount) || 0),
+                    category: r.category || r.categoryId || 'other',
+                    memo: r.memo || '',
+                    receipt_url: r.receipt_url || r.receipt || '',
+                    updated_at: r.updated_at || new Date().toISOString(),
+                    // 旧データは既に同期済みの可能性が高いため _dirty: false に設定し強制復活を防止
+                    _synced: Boolean(state.supaKey),
+                    _dirty: !Boolean(state.supaKey),
+                    _ownerUserId: null,
+                  }));
+                break;
+              }
+            }
+          }
+          state.records = migrated;
+          saveLocalRecords();
+        }
+      } catch (e) {
+        console.warn('レコード読み込みエラー:', e);
+        state.records = [];
+      }
+    }
+
+    function normalizeRecordsArray(arr, defaultDirty = false) {
+      return arr
+        .filter((r) => r && r.date && !r.isSample)
+        .map((r) => ({
+          id: String(r.id),
+          date: String(r.date),
+          amount: Math.round(Number(r.amount) || 0),
+          category: String(r.category || 'other'),
+          memo: String(r.memo || ''),
+          receipt_url: String(r.receipt_url || ''),
+          updated_at: r.updated_at || new Date().toISOString(),
+          _synced: typeof r._synced === 'boolean' ? r._synced : !defaultDirty,
+          _dirty: typeof r._dirty === 'boolean' ? r._dirty : defaultDirty,
+          _ownerUserId: r._ownerUserId || null,
+        }));
     }
 
     function saveLocalRecords() {
       try {
         localStorage.setItem(LS_RECORDS_KEY, JSON.stringify(state.records));
-        localStorage.setItem(LS_INITIALIZED_KEY, '1');
       } catch (e) {
-        showToast('ブラウザの保存容量上限に近づいています。クラウド同期の利用をおすすめします。', 'error');
+        showToast('端末の保存容量上限に近づいています。クラウド同期の利用をおすすめします。', 'error');
       }
     }
 
     function saveLocalCategories() {
       try {
         localStorage.setItem(LS_CATEGORIES_KEY, JSON.stringify(state.categories));
+        localStorage.setItem(LS_CATS_DIRTY_KEY, state.categoriesDirty ? '1' : '0');
       } catch (e) {
         console.warn(e);
       }
     }
 
+    function savePendingDeletes() {
+      try {
+        localStorage.setItem(LS_PENDING_DELETES_KEY, JSON.stringify(state.pendingDeletes));
+      } catch (e) {
+        console.warn(e);
+      }
+    }
+
+    function setLastSyncedUserId(uid) {
+      state.lastSyncedUserId = uid || null;
+      if (uid) {
+        localStorage.setItem(LS_LAST_USER_ID_KEY, uid);
+      } else {
+        localStorage.removeItem(LS_LAST_USER_ID_KEY);
+      }
+    }
+
     /* =====================================================================
-     * Supabase クライアント初期化・認証・スマート同期ロジック
+     * ★最重要：Supabase クラウド差分同期アルゴリズム（削除復活を完全防止）
      * ===================================================================== */
-    function updateSyncStatusUI(mode, customText = '') {
+    function updateSyncStatusUI(status, customLabel = '') {
       const dot = document.getElementById('syncStatusDot');
       const text = document.getElementById('syncStatusText');
       const badge = document.getElementById('syncStatusBadge');
+      const resyncBtn = document.getElementById('quickResyncBtn');
 
-      if (mode === 'syncing') {
+      if (state.user) {
+        resyncBtn.classList.remove('hidden');
+        resyncBtn.classList.add('inline-flex');
+      } else {
+        resyncBtn.classList.add('hidden');
+        resyncBtn.classList.remove('inline-flex');
+      }
+
+      if (status === 'syncing') {
         dot.className = 'w-2 h-2 rounded-full bg-nando-500 animate-ping';
-        text.textContent = customText || '🔄 通信中...';
+        text.textContent = customLabel || '同期中...';
         badge.className = 'inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full text-xs font-bold bg-byakugun-100 text-nando-700 border border-byakugun-400 cursor-pointer';
-      } else if (mode === 'connected') {
+      } else if (status === 'connected') {
+        const pendingCount = state.records.filter((r) => r._dirty).length + state.pendingDeletes.length;
         dot.className = 'w-2 h-2 rounded-full bg-emerald-500';
-        text.textContent = customText || '🟢 同期中';
+        text.textContent = customLabel || (pendingCount > 0 ? `未送信 ${pendingCount}件` : '同期済み');
         badge.className = 'inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 cursor-pointer';
-      } else if (mode === 'error') {
+      } else if (status === 'error') {
         dot.className = 'w-2 h-2 rounded-full bg-amber-500';
-        text.textContent = customText || '同期エラー';
+        text.textContent = customLabel || '同期エラー';
         badge.className = 'inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200 cursor-pointer';
       } else {
         dot.className = 'w-2 h-2 rounded-full bg-sabinando-400';
-        text.textContent = '未接続（端末保存）';
+        text.textContent = '未接続';
         badge.className = 'inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full text-xs font-bold bg-sabinando-100 text-sabinando-600 border border-sabinando-200 hover:bg-byakugun-100 transition cursor-pointer';
       }
       renderSyncModalBanner();
     }
 
-    function createSupabaseInstance(url, key) {
+    function initSupabaseClient(url, key) {
       if (!window.supabase || !url || !key) return null;
       try {
         return window.supabase.createClient(url.trim(), key.trim(), {
           auth: { persistSession: true, autoRefreshToken: true },
         });
-      } catch (err) {
-        console.error('Supabase初期化失敗:', err);
+      } catch (e) {
+        console.error('Supabase初期化エラー:', e);
         return null;
       }
     }
 
-    async function restoreSupabaseSession() {
-      if (!state.supaUrl || !state.supaKey) {
-        updateSyncStatusUI('disconnected');
-        return;
+    /**
+     * アカウント切り替え時のデータ混入防止処理
+     * 以前別アカウントで同期していたローカル同期済みレコードをクリアする
+     */
+    function guardAccountSwitch(currentUserId, allowAdoptUnownedLocal = false) {
+      if (state.lastSyncedUserId && state.lastSyncedUserId !== currentUserId) {
+        // 前のアカウントに紐づくデータを完全除去
+        state.records = state.records.filter(
+          (r) => !r._ownerUserId && r._dirty && allowAdoptUnownedLocal
+        );
+        state.pendingDeletes = [];
+        savePendingDeletes();
+        state.categories = [...DEFAULT_CATEGORIES];
+        state.categoriesDirty = false;
+        saveLocalCategories();
+      } else if (!allowAdoptUnownedLocal) {
+        // チェックを外してログインした場合は、未所有のローカルデータも引き継がずクラウド側で統一
+        state.records = state.records.filter((r) => r._ownerUserId === currentUserId);
       }
-      state.supabase = createSupabaseInstance(state.supaUrl, state.supaKey);
-      if (!state.supabase) return;
+      setLastSyncedUserId(currentUserId);
+      saveLocalRecords();
+    }
+
+    /**
+     * Supabase Realtime購読（対応テーブルでRealtimeが有効なら他端末の変更を即時反映）
+     */
+    function setupRealtimeSubscription() {
+      if (!state.supabase || !state.user) return;
+      teardownRealtimeSubscription();
 
       try {
-        const { data, error } = await state.supabase.auth.getSession();
-        if (!error && data?.session?.user) {
-          state.user = data.session.user;
-          updateSyncStatusUI('connected');
-          await syncWithCloud(false);
-        } else {
-          updateSyncStatusUI('disconnected');
-        }
+        state.realtimeChannel = state.supabase
+          .channel('kakeibo-changes-' + state.user.id)
+          .on(
+            'postgres_changes',
+            { event: '*', schema: 'public', table: 'kakeibo_records' },
+            () => {
+              // 他端末での追加・編集・削除を検知したら最新を取得
+              if (!state.isSyncing) {
+                syncWithCloud({ showToastOnSuccess: false });
+              }
+            }
+          )
+          .subscribe();
       } catch (e) {
-        console.warn('セッション確認エラー:', e);
-        updateSyncStatusUI('disconnected');
+        // Realtimeが無効でもfocus/visibilitychangeで自動同期されるため問題なし
+      }
+    }
+
+    function teardownRealtimeSubscription() {
+      if (state.supabase && state.realtimeChannel) {
+        try {
+          state.supabase.removeChannel(state.realtimeChannel);
+        } catch (e) {}
+        state.realtimeChannel = null;
       }
     }
 
     /**
-     * DataURLをBlobに変換（StorageへのJPEGアップロード用）
+     * DataURLをJPEG Blobへ変換
      */
     function dataUrlToBlob(dataUrl) {
       const parts = dataUrl.split(',');
       const mimeMatch = parts[0].match(/:(.*?);/);
       const mime = mimeMatch ? mimeMatch[1] : 'image/jpeg';
-      const binary = atob(parts[1]);
-      const array = new Uint8Array(binary.length);
-      for (let i = 0; i < binary.length; i++) {
-        array[i] = binary.charCodeAt(i);
-      }
-      return new Blob([array], { type: mime });
+      const bin = atob(parts[1]);
+      const arr = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+      return new Blob([arr], { type: mime });
     }
 
     /**
-     * レシート画像をSupabase Storage（receiptsバケット）にアップロードし、保存用パスを返す
-     * 万一バケット権限等で失敗した場合も圧縮DataURLにフォールバックしてデータ欠損を防ぐ
+     * レシート画像のStorageアップロード（`${user.id}/${record.id}.jpg`）
+     * 失敗時は圧縮Base64にフォールバックして確実に保存
      */
-    async function uploadReceiptIfNeeded(recordId, receiptValue, explicitBlob = null) {
+    async function uploadReceiptToStorage(recordId, receiptValue, explicitBlob = null) {
       if (!receiptValue) return '';
-      if (receiptValue.startsWith('storage://')) return receiptValue;
+      if (extractStoragePath(receiptValue)) return receiptValue;
       if (!state.supabase || !state.user) return receiptValue;
 
       if (receiptValue.startsWith('data:image/')) {
         try {
           const blob = explicitBlob || dataUrlToBlob(receiptValue);
-          const objectPath = `${state.user.id}/${recordId}.jpg`;
+          const storagePath = `${state.user.id}/${recordId}.jpg`;
           const { error } = await state.supabase.storage
             .from('receipts')
-            .upload(objectPath, blob, { contentType: 'image/jpeg', upsert: true });
+            .upload(storagePath, blob, { upsert: true, contentType: 'image/jpeg' });
 
           if (!error) {
-            // キャッシュも即時更新
-            const { data: signedData } = await state.supabase.storage
+            const { data: signed } = await state.supabase.storage
               .from('receipts')
-              .createSignedUrl(objectPath, 60 * 60 * 24 * 7);
-            if (signedData?.signedUrl) {
-              state.signedUrlCache[objectPath] = signedData.signedUrl;
+              .createSignedUrl(storagePath, 3600 * 24 * 7);
+            if (signed?.signedUrl) {
+              state.signedUrlCache[storagePath] = {
+                url: signed.signedUrl,
+                expiresAt: Date.now() + 3600 * 24 * 6 * 1000,
+              };
             }
-            return `storage://${objectPath}`;
+            return `storage:${storagePath}`;
           } else {
             console.warn('Storage保存フォールバック:', error.message);
             return receiptValue;
           }
         } catch (err) {
-          console.warn('Storage変換エラー:', err);
+          console.warn('Storageアップロード例外:', err);
           return receiptValue;
         }
       }
@@ -1254,257 +1445,388 @@
     }
 
     /**
-     * storage:// パスから署名付きURLを非同期取得してimg要素に反映する
+     * Storage識別子から署名付きURLを解決する
      */
-    async function resolveReceiptImgUrl(receiptUrl) {
-      if (!receiptUrl) return '';
-      if (!receiptUrl.startsWith('storage://')) return receiptUrl;
+    async function resolveReceiptUrl(receiptValue) {
+      if (!receiptValue) return '';
+      const storagePath = extractStoragePath(receiptValue);
+      if (!storagePath) return receiptValue;
 
-      const objectPath = receiptUrl.replace('storage://', '');
-      if (state.signedUrlCache[objectPath]) {
-        return state.signedUrlCache[objectPath];
+      const cached = state.signedUrlCache[storagePath];
+      if (cached && cached.expiresAt > Date.now()) {
+        return cached.url;
       }
       if (!state.supabase || !state.user) return '';
 
       try {
         const { data, error } = await state.supabase.storage
           .from('receipts')
-          .createSignedUrl(objectPath, 60 * 60 * 24 * 7);
+          .createSignedUrl(storagePath, 3600 * 24 * 7);
         if (!error && data?.signedUrl) {
-          state.signedUrlCache[objectPath] = data.signedUrl;
+          state.signedUrlCache[storagePath] = {
+            url: data.signedUrl,
+            expiresAt: Date.now() + 3600 * 24 * 6 * 1000,
+          };
           return data.signedUrl;
         }
       } catch (e) {
-        console.warn('署名URL取得失敗:', e);
+        console.warn('署名URL取得エラー:', e);
       }
       return '';
     }
 
-    /**
-     * 画面内の `data-storage-receipt` 属性を持つimg要素へ署名付きURLを流し込む
-     */
-    async function hydrateStorageReceiptImages() {
+    async function hydrateStorageThumbnails() {
       const imgs = document.querySelectorAll('img[data-storage-receipt]');
       for (const img of imgs) {
-        const rawUrl = img.getAttribute('data-storage-receipt');
-        const resolved = await resolveReceiptImgUrl(rawUrl);
-        if (resolved) img.src = resolved;
+        const raw = img.getAttribute('data-storage-receipt');
+        const url = await resolveReceiptUrl(raw);
+        if (url) img.src = url;
       }
     }
 
     /**
-     * クラウドとのスマート双方向マージ同期
-     * - 見本データ（isSample: true）はクラウドへ送らない
-     * - 端末にある未送信の実データは自動でクラウドへアップロード
-     * - クラウドに実データがある場合は見本データを自動的に外してスッキリ表示
+     * ★正確なクラウド同期処理 `syncWithCloud()`
+     * Step A: pendingDeletes に残っている削除待ちIDをクラウドから削除
+     * Step B: _dirty === true（新規・編集された未送信分のみ！）だけをクラウドへ upsert
+     *         ※ _synced: true かつ _dirty: false のデータは絶対に再アップロードしない！
+     * Step C: クラウドから最新の全レコードを取得
+     * Step D: ローカルを「クラウド最新リスト ＋ 万一送信失敗して _dirty のまま残ったもの」で完全置換！
+     *         → スマホで消したデータはPCの同期時にPCの localStorage からも確実に消去される！
      */
-    async function syncWithCloud(showSuccessToast = false) {
-      if (!state.supabase || !state.user || state.isSyncing) return;
+    async function syncWithCloud(options = {}) {
+      const { showToastOnSuccess = false, forceDiscardLocalDirty = false } = options;
+      if (!state.supabase || !state.user) return;
+      if (state.isSyncing) return;
+
       state.isSyncing = true;
+      state.lastAutoSyncAt = Date.now();
       updateSyncStatusUI('syncing');
 
       try {
-        // 1. カテゴリの同期
-        const { data: settingRow, error: settingErr } = await state.supabase
-          .from('kakeibo_settings')
-          .select('*')
-          .eq('user_id', state.user.id)
-          .maybeSingle();
+        const uid = state.user.id;
 
-        if (!settingErr) {
-          if (settingRow && Array.isArray(settingRow.categories) && settingRow.categories.length > 0) {
-            // ローカルで追加されたカスタムカテゴリがあればマージ
-            const mergedCatMap = new Map();
-            settingRow.categories.forEach((c) => mergedCatMap.set(c.id, c));
-            state.categories.forEach((c) => {
-              if (!mergedCatMap.has(c.id)) mergedCatMap.set(c.id, c);
-            });
-            state.categories = Array.from(mergedCatMap.values());
-            saveLocalCategories();
+        // 強制再取得モードの場合はローカルの未送信フラグ・削除待ちキューを破棄
+        if (forceDiscardLocalDirty) {
+          state.pendingDeletes = [];
+          savePendingDeletes();
+          state.categoriesDirty = false;
+          state.records = state.records.map((r) => ({ ...r, _dirty: false }));
+        }
+
+        // -----------------------------------------------------------------
+        // Step A: pendingDeletes（オフライン中などに削除されたID）をクラウドから削除
+        // -----------------------------------------------------------------
+        if (state.pendingDeletes.length > 0) {
+          const deleteIds = state.pendingDeletes.map((d) => d.id);
+          const storagePathsToRemove = state.pendingDeletes
+            .map((d) => extractStoragePath(d.receipt_url))
+            .filter(Boolean);
+
+          const { error: delErr } = await state.supabase
+            .from('kakeibo_records')
+            .delete()
+            .in('id', deleteIds);
+
+          if (!delErr) {
+            if (storagePathsToRemove.length > 0) {
+              await state.supabase.storage.from('receipts').remove(storagePathsToRemove).catch(() => {});
+            }
+            state.pendingDeletes = [];
+            savePendingDeletes();
+          } else {
+            console.warn('pendingDeletes削除エラー:', delErr.message);
           }
-          await state.supabase.from('kakeibo_settings').upsert({
-            user_id: state.user.id,
+        }
+
+        // -----------------------------------------------------------------
+        // カテゴリの同期（dirtyな場合のみクラウドへ送信、そうでなければクラウドから取得）
+        // -----------------------------------------------------------------
+        if (state.categoriesDirty) {
+          const { error: catUpErr } = await state.supabase.from('kakeibo_settings').upsert({
+            user_id: uid,
             categories: state.categories,
             updated_at: new Date().toISOString(),
           });
+          if (!catUpErr) {
+            state.categoriesDirty = false;
+            saveLocalCategories();
+          }
+        } else {
+          const { data: settingRow, error: catFetchErr } = await state.supabase
+            .from('kakeibo_settings')
+            .select('*')
+            .eq('user_id', uid)
+            .maybeSingle();
+
+          if (!catFetchErr) {
+            if (settingRow && Array.isArray(settingRow.categories) && settingRow.categories.length > 0) {
+              state.categories = settingRow.categories;
+              saveLocalCategories();
+            } else {
+              // クラウドにまだ設定レコードが無い場合は現在のカテゴリを初期登録
+              await state.supabase.from('kakeibo_settings').upsert({
+                user_id: uid,
+                categories: state.categories,
+                updated_at: new Date().toISOString(),
+              });
+            }
+          }
         }
 
-        // 2. 出費レコードの取得
-        const { data: cloudRows, error: recErr } = await state.supabase
+        // -----------------------------------------------------------------
+        // Step B: ローカルで `_dirty === true` のレコードだけをクラウドへ upsert
+        // （他ユーザー所有でないもののみ。既に _synced: true & _dirty: false のものは送らない！）
+        // -----------------------------------------------------------------
+        const dirtyRecords = state.records.filter(
+          (r) => r._dirty === true && (!r._ownerUserId || r._ownerUserId === uid)
+        );
+
+        if (dirtyRecords.length > 0) {
+          const upsertPayloads = [];
+          for (const rec of dirtyRecords) {
+            const uploadedReceipt = await uploadReceiptToStorage(rec.id, rec.receipt_url);
+            rec.receipt_url = uploadedReceipt;
+            upsertPayloads.push({
+              id: rec.id,
+              user_id: uid,
+              date: rec.date,
+              amount: Math.round(Number(rec.amount) || 0),
+              category: rec.category,
+              memo: rec.memo || '',
+              receipt_url: uploadedReceipt || '',
+              updated_at: rec.updated_at || new Date().toISOString(),
+            });
+          }
+
+          const { error: upErr } = await state.supabase.from('kakeibo_records').upsert(upsertPayloads);
+          if (!upErr) {
+            const sentIds = new Set(dirtyRecords.map((r) => r.id));
+            state.records.forEach((r) => {
+              if (sentIds.has(r.id)) {
+                r._dirty = false;
+                r._synced = true;
+                r._ownerUserId = uid;
+              }
+            });
+          } else {
+            console.warn('dirtyレコードのupsert失敗:', upErr.message);
+          }
+        }
+
+        // -----------------------------------------------------------------
+        // Step C: クラウドから最新の全レコードを取得
+        // -----------------------------------------------------------------
+        const { data: cloudRows, error: fetchErr } = await state.supabase
           .from('kakeibo_records')
           .select('*')
           .order('date', { ascending: false });
 
-        if (recErr) throw recErr;
+        if (fetchErr) throw fetchErr;
 
-        const cloudMap = new Map();
-        (cloudRows || []).forEach((row) => cloudMap.set(row.id, row));
+        // 念のため削除待ちに残っているIDがあれば除外
+        const pendingDeleteIdSet = new Set(state.pendingDeletes.map((d) => d.id));
 
-        // 3. 端末側にだけある実データ（!isSample）をクラウドへアップロード
-        const localRealRecords = state.records.filter((r) => !r.isSample);
-        const toUpsert = [];
+        const freshCloudRecords = (cloudRows || [])
+          .filter((row) => !pendingDeleteIdSet.has(row.id))
+          .map((row) => ({
+            id: String(row.id),
+            date: String(row.date),
+            amount: Math.round(Number(row.amount) || 0),
+            category: String(row.category || 'other'),
+            memo: String(row.memo || ''),
+            receipt_url: String(row.receipt_url || ''),
+            updated_at: row.updated_at || new Date().toISOString(),
+            _synced: true,
+            _dirty: false,
+            _ownerUserId: uid,
+          }));
 
-        for (const localRec of localRealRecords) {
-          const cloudRec = cloudMap.get(localRec.id);
-          const localTime = new Date(localRec.updated_at || 0).getTime();
-          const cloudTime = cloudRec ? new Date(cloudRec.updated_at || 0).getTime() : -1;
+        // -----------------------------------------------------------------
+        // Step D: ローカルを「クラウド最新リスト ＋ 万一送信失敗して _dirty のまま残ったレコード」で完全置換！
+        // これによりスマホで削除されたレコードはPCのlocalStorageからも完全に消え、二度と復活しない。
+        // -----------------------------------------------------------------
+        const cloudIdSet = new Set(freshCloudRecords.map((r) => r.id));
+        const stillUnsentDirty = state.records.filter(
+          (r) => r._dirty === true && (!r._ownerUserId || r._ownerUserId === uid)
+        );
 
-          if (!cloudRec || localTime > cloudTime) {
-            const uploadedReceiptUrl = await uploadReceiptIfNeeded(localRec.id, localRec.receipt_url);
-            const payload = {
-              id: localRec.id,
-              user_id: state.user.id,
-              date: localRec.date,
-              amount: Math.round(Number(localRec.amount) || 0),
-              category: localRec.category,
-              memo: localRec.memo || '',
-              receipt_url: uploadedReceiptUrl || '',
-              updated_at: localRec.updated_at || new Date().toISOString(),
-            };
-            toUpsert.push(payload);
-            cloudMap.set(payload.id, payload);
+        const finalMap = new Map();
+        freshCloudRecords.forEach((r) => finalMap.set(r.id, r));
+        stillUnsentDirty.forEach((r) => {
+          // 通信エラー等でまだ送れていない最新編集分だけを保持
+          if (!cloudIdSet.has(r.id) || new Date(r.updated_at) > new Date(finalMap.get(r.id).updated_at)) {
+            finalMap.set(r.id, r);
           }
-        }
+        });
 
-        if (toUpsert.length > 0) {
-          const { error: upErr } = await state.supabase.from('kakeibo_records').upsert(toUpsert);
-          if (upErr) throw upErr;
-        }
-
-        // 4. 統合結果を端末へ反映（実データが1件以上あれば見本データを自動で除外）
-        const mergedReal = Array.from(cloudMap.values()).map((r) => ({
-          id: r.id,
-          date: r.date,
-          amount: Number(r.amount) || 0,
-          category: r.category,
-          memo: r.memo || '',
-          receipt_url: r.receipt_url || '',
-          updated_at: r.updated_at,
-          isSample: false,
-        }));
-
-        if (mergedReal.length > 0) {
-          state.records = mergedReal;
-        } else {
-          // クラウドもローカルも実データ0件なら、ログイン後はまっすぐ使い始められるよう見本をクリア
-          state.records = [];
-        }
-
+        state.records = Array.from(finalMap.values()).sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+        setLastSyncedUserId(uid);
         saveLocalRecords();
+
         updateSyncStatusUI('connected');
         renderAll();
 
-        if (showSuccessToast) {
-          showToast(`クラウド同期が完了しました（${state.records.length}件）`);
+        if (showToastOnSuccess) {
+          showToast(`クラウドと同期しました（全 ${state.records.length} 件）`);
         }
       } catch (err) {
-        console.error('クラウド同期失敗:', err);
+        console.error('同期エラー:', err);
         updateSyncStatusUI('error');
-        showToast('同期中にエラーが発生しました: ' + (err.message || '設定を確認してください'), 'error');
+        if (showToastOnSuccess) {
+          showToast('同期エラー: ' + (err.message || '通信状況を確認してください'), 'error');
+        }
       } finally {
         state.isSyncing = false;
       }
     }
 
     /**
-     * 単一レコードのクラウド即時保存
+     * 単一レコードの作成・編集直後に即座にクラウドへ反映する処理
      */
-    async function pushSingleRecordToCloud(record, explicitBlob = null) {
-      if (!state.supabase || !state.user || record.isSample) return;
+    async function syncUpsertSingleRecord(record, explicitBlob = null) {
+      if (!state.supabase || !state.user) return;
       updateSyncStatusUI('syncing');
       try {
-        const finalReceiptUrl = await uploadReceiptIfNeeded(record.id, record.receipt_url, explicitBlob);
-        record.receipt_url = finalReceiptUrl;
-        saveLocalRecords();
+        const uid = state.user.id;
+        const uploadedReceipt = await uploadReceiptToStorage(record.id, record.receipt_url, explicitBlob);
+        record.receipt_url = uploadedReceipt;
 
         const { error } = await state.supabase.from('kakeibo_records').upsert({
           id: record.id,
-          user_id: state.user.id,
+          user_id: uid,
           date: record.date,
           amount: Math.round(Number(record.amount) || 0),
           category: record.category,
           memo: record.memo || '',
-          receipt_url: finalReceiptUrl || '',
+          receipt_url: uploadedReceipt || '',
           updated_at: record.updated_at,
         });
+
         if (error) throw error;
+
+        record._dirty = false;
+        record._synced = true;
+        record._ownerUserId = uid;
+        saveLocalRecords();
         updateSyncStatusUI('connected');
       } catch (err) {
-        console.error('レコード送信失敗:', err);
+        console.warn('単一送信失敗（次回同期時に自動再送されます）:', err);
         updateSyncStatusUI('error');
-        showToast('端末に保存しましたがクラウド送信に失敗しました', 'error');
       }
     }
 
     /**
-     * 単一レコードのクラウド削除
+     * レコード削除時の即時クラウド削除 ＋ pendingDeletes キュー管理
      */
-    async function deleteSingleRecordFromCloud(record) {
-      if (!state.supabase || !state.user || record.isSample) return;
-      updateSyncStatusUI('syncing');
-      try {
-        await state.supabase.from('kakeibo_records').delete().eq('id', record.id);
-        if (record.receipt_url && record.receipt_url.startsWith('storage://')) {
-          const objectPath = record.receipt_url.replace('storage://', '');
-          await state.supabase.storage.from('receipts').remove([objectPath]);
+    async function executeRecordDelete(targetRecord) {
+      // 1. ローカル配列から即座に除去
+      state.records = state.records.filter((r) => r.id !== targetRecord.id);
+      saveLocalRecords();
+
+      // まだ一度もクラウドへ送られていないローカル限定レコードならクラウド削除不要
+      if (!targetRecord._synced && !state.user) {
+        return;
+      }
+
+      // 2. pendingDeletes キューに登録（オフラインや途中で閉じた場合も確実に削除するため）
+      const delItem = { id: targetRecord.id, receipt_url: targetRecord.receipt_url || '' };
+      if (!state.pendingDeletes.some((d) => d.id === delItem.id)) {
+        state.pendingDeletes.push(delItem);
+        savePendingDeletes();
+      }
+
+      // 3. オンライン＆ログイン中なら即座にSupabaseから削除し、成功したらキューから外す
+      if (state.supabase && state.user) {
+        updateSyncStatusUI('syncing');
+        try {
+          const { error } = await state.supabase.from('kakeibo_records').delete().eq('id', targetRecord.id);
+          if (error) throw error;
+
+          const sp = extractStoragePath(targetRecord.receipt_url);
+          if (sp) {
+            await state.supabase.storage.from('receipts').remove([sp]).catch(() => {});
+          }
+
+          state.pendingDeletes = state.pendingDeletes.filter((d) => d.id !== targetRecord.id);
+          savePendingDeletes();
+          updateSyncStatusUI('connected');
+        } catch (err) {
+          console.warn('クラウド即時削除失敗（pendingDeletesに保持し次回同期で削除）:', err);
+          updateSyncStatusUI('error');
         }
-        updateSyncStatusUI('connected');
-      } catch (err) {
-        console.warn('クラウド削除失敗:', err);
-        updateSyncStatusUI('error');
       }
     }
 
     /**
-     * カテゴリのクラウド即時保存
+     * アプリ起動時のセッション復元
      */
-    async function pushCategoriesToCloud() {
-      if (!state.supabase || !state.user) return;
+    async function restoreSessionAndSync() {
+      if (!state.supaUrl || !state.supaKey) {
+        updateSyncStatusUI('disconnected');
+        return;
+      }
+
+      state.supabase = initSupabaseClient(state.supaUrl, state.supaKey);
+      if (!state.supabase) {
+        updateSyncStatusUI('disconnected');
+        return;
+      }
+
       try {
-        await state.supabase.from('kakeibo_settings').upsert({
-          user_id: state.user.id,
-          categories: state.categories,
-          updated_at: new Date().toISOString(),
-        });
-      } catch (err) {
-        console.warn('カテゴリ同期失敗:', err);
+        const { data, error } = await state.supabase.auth.getSession();
+        if (!error && data?.session?.user) {
+          state.user = data.session.user;
+          // 別アカウントの同期済みデータが残っていれば保護
+          guardAccountSwitch(state.user.id, true);
+          updateSyncStatusUI('connected');
+          setupRealtimeSubscription();
+          await syncWithCloud({ showToastOnSuccess: false });
+        } else {
+          updateSyncStatusUI('disconnected');
+        }
+      } catch (e) {
+        console.warn('セッション復元エラー:', e);
+        updateSyncStatusUI('disconnected');
       }
     }
 
     /* =====================================================================
-     * 同期設定モーダルの操作
+     * 同期モーダル操作・ログイン・ログアウト・強制再取得
      * ===================================================================== */
     function renderSyncModalBanner() {
       const banner = document.getElementById('syncModalAccountBanner');
       const authFields = document.getElementById('syncAuthFields');
-      const btnConnect = document.getElementById('btnConnectLogin');
+      const btnLogin = document.getElementById('btnConnectLogin');
       const btnManual = document.getElementById('btnManualSync');
       const btnLogout = document.getElementById('btnLogout');
+      const forceSec = document.getElementById('forcePullSection');
       if (!banner) return;
 
       if (state.user) {
         banner.innerHTML = `
           <div class="flex items-center justify-between gap-2">
             <div>
-              <div class="font-extrabold text-nando-700">🟢 クラウド接続・ログイン済み</div>
-              <div class="text-xs text-sabinando-600 mt-0.5">アカウント：${escapeHtml(state.user.email)}</div>
+              <div class="font-extrabold text-nando-700">🟢 クラウド同期中</div>
+              <div class="text-xs text-sabinando-600 mt-0.5">ログイン中：${escapeHtml(state.user.email)}</div>
             </div>
-            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-white text-nando-700 border border-byakugun-300">自動同期ON</span>
+            <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-white text-nando-700 border border-byakugun-300">自動同期ON</span>
           </div>
         `;
         authFields.classList.add('hidden');
-        btnConnect.classList.add('hidden');
+        btnLogin.classList.add('hidden');
         btnManual.classList.remove('hidden');
         btnLogout.classList.remove('hidden');
+        forceSec.classList.remove('hidden');
       } else {
         banner.innerHTML = `
-          <div class="font-bold text-sabinando-700">⚪ 現在はこの端末のブラウザ内に保存されています</div>
-          <div class="text-xs text-sabinando-500 mt-0.5">下の項目を入力してログインすると、PCとスマホで自動同期が始まります。</div>
+          <div class="font-bold text-sabinando-700">⚪ 未接続（この端末のブラウザのみに保存）</div>
+          <div class="text-xs text-sabinando-500 mt-0.5">API Keyとメールアドレス・パスワードでログインするとPC・スマホ間の同期が有効になります。</div>
         `;
         authFields.classList.remove('hidden');
-        btnConnect.classList.remove('hidden');
+        btnLogin.classList.remove('hidden');
         btnManual.classList.add('hidden');
         btnLogout.classList.add('hidden');
+        forceSec.classList.add('hidden');
       }
     }
 
@@ -1525,10 +1847,11 @@
 
     async function handleSyncLogin(event) {
       event.preventDefault();
-      const url = document.getElementById('supaUrlInput').value.trim();
+      const url = document.getElementById('supaUrlInput').value.trim() || DEFAULT_SUPABASE_URL;
       const key = document.getElementById('supaKeyInput').value.trim();
       const email = document.getElementById('supaEmailInput').value.trim();
       const password = document.getElementById('supaPassInput').value;
+      const adoptLocal = document.getElementById('uploadLocalBeforeLoginChk').checked;
 
       if (!url || !key) {
         showToast('Project URL と API Key を入力してください', 'error');
@@ -1541,11 +1864,11 @@
 
       const btn = document.getElementById('btnConnectLogin');
       btn.disabled = true;
-      btn.textContent = '接続中...';
+      btn.textContent = 'ログイン中...';
 
       try {
-        const client = createSupabaseInstance(url, key);
-        if (!client) throw new Error('URLまたはAPIキーの形式が正しくありません');
+        const client = initSupabaseClient(url, key);
+        if (!client) throw new Error('URLまたはAPI Keyの形式が正しくありません');
 
         const { data, error } = await client.auth.signInWithPassword({ email, password });
         if (error) throw error;
@@ -1556,44 +1879,71 @@
         state.user = data.user;
         localStorage.setItem(LS_SUPA_CONFIG_KEY, JSON.stringify({ url, key }));
 
+        // アカウント切り替え時のデータ混入ガード
+        guardAccountSwitch(state.user.id, adoptLocal);
+
         document.getElementById('supaPassInput').value = '';
-        await syncWithCloud(true);
+        setupRealtimeSubscription();
+        await syncWithCloud({ showToastOnSuccess: true });
         renderSyncModalBanner();
         closeSyncModal();
       } catch (err) {
         console.error(err);
-        showToast('ログイン失敗: ' + (err.message || 'キーやパスワードを確認してください'), 'error');
+        showToast('ログイン失敗: ' + (err.message || '認証情報を確認してください'), 'error');
         updateSyncStatusUI('error');
       } finally {
         btn.disabled = false;
-        btn.textContent = '接続してログイン＆同期する';
+        btn.textContent = 'ログインして同期を開始';
       }
     }
 
     async function handleSyncLogout() {
-      if (state.supabase) {
-        await state.supabase.auth.signOut();
-      }
-      state.user = null;
-      updateSyncStatusUI('disconnected');
-      renderSyncModalBanner();
-      showToast('ログアウトしました（端末内のデータはそのまま残ります）');
+      openConfirmModal(
+        'ログアウトしますか？',
+        '別アカウントとのデータ混入を防ぐため、この端末上の同期済みキャッシュをクリアしてログアウトします（クラウド上のデータは安全に保たれます）。',
+        async () => {
+          teardownRealtimeSubscription();
+          if (state.supabase) {
+            await state.supabase.auth.signOut().catch(() => {});
+          }
+          state.user = null;
+          state.signedUrlCache = {};
+          // 同期済みレコードを端末からクリアしてアカウント間の混入を防止
+          state.records = [];
+          state.pendingDeletes = [];
+          setLastSyncedUserId(null);
+          saveLocalRecords();
+          savePendingDeletes();
+
+          updateSyncStatusUI('disconnected');
+          renderAll();
+          renderSyncModalBanner();
+          showToast('ログアウトしました');
+        }
+      );
+    }
+
+    function confirmForceOverwriteFromCloud() {
+      openConfirmModal(
+        'クラウドの最新データで上書きしますか？',
+        'この端末に残っている未送信キャッシュを破棄し、Supabaseクラウド上の最新データと完全に一致させます。',
+        async () => {
+          await syncWithCloud({ showToastOnSuccess: true, forceDiscardLocalDirty: true });
+          closeSyncModal();
+        }
+      );
     }
 
     /* =====================================================================
-     * カレンダー描画 ＆ 選択日の入出力・レシート圧縮
+     * カレンダー描画・電卓テンキー・レシート圧縮・出費CRUD
      * ===================================================================== */
     function renderAll() {
-      // 見本データバナーの表示判定
-      const hasSample = state.records.some((r) => r.isSample);
-      document.getElementById('sampleBanner').classList.toggle('hidden', !hasSample);
-
       renderCalendar();
       renderCategoryPills();
       renderSelectedDaySection();
       renderAnalyticsSection();
-      renderManageContent();
-      updateMobileTabStyles();
+      renderManagePanels();
+      updateMobileTabUI();
     }
 
     function renderCalendar() {
@@ -1605,33 +1955,31 @@
       const daysInMonth = new Date(y, m + 1, 0).getDate();
       const startDow = firstDay.getDay();
 
-      // 月内の日付別集計
       const dailyMap = {};
-      let monthSum = 0;
+      let monthTotal = 0;
 
-      state.records.forEach((rec) => {
-        const d = parseDateStr(rec.date);
+      state.records.forEach((r) => {
+        const d = parseDateStr(r.date);
         if (d.getFullYear() === y && d.getMonth() === m) {
-          const amt = Number(rec.amount) || 0;
-          monthSum += amt;
-          if (!dailyMap[rec.date]) {
-            dailyMap[rec.date] = { total: 0, hasPhoto: false, cats: [] };
+          const amt = Number(r.amount) || 0;
+          monthTotal += amt;
+          if (!dailyMap[r.date]) {
+            dailyMap[r.date] = { total: 0, hasPhoto: false, cats: [] };
           }
-          dailyMap[rec.date].total += amt;
-          dailyMap[rec.date].cats.push(rec.category);
-          if (rec.receipt_url) dailyMap[rec.date].hasPhoto = true;
+          dailyMap[r.date].total += amt;
+          dailyMap[r.date].cats.push(r.category);
+          if (r.receipt_url) dailyMap[r.date].hasPhoto = true;
         }
       });
 
-      document.getElementById('calendarMonthTotal').textContent = formatYen(monthSum);
+      document.getElementById('calendarMonthTotal').textContent = formatYen(monthTotal);
 
       const grid = document.getElementById('calendarGrid');
       grid.innerHTML = '';
 
-      // 空白セル
       for (let i = 0; i < startDow; i++) {
         const blank = document.createElement('div');
-        blank.className = 'min-h-[60px] sm:min-h-[68px] rounded-2xl bg-byakugun-50/40';
+        blank.className = 'min-h-[60px] sm:min-h-[68px] rounded-2xl bg-byakugun-50/50';
         grid.appendChild(blank);
       }
 
@@ -1645,9 +1993,9 @@
         const isSelected = dStr === state.selectedDate;
         const isToday = dStr === todayStr;
 
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.onclick = () => selectCalendarDate(dStr);
+        const cell = document.createElement('button');
+        cell.type = 'button';
+        cell.onclick = () => selectCalendarDate(dStr);
 
         let cls = 'min-h-[60px] sm:min-h-[68px] rounded-2xl p-1.5 flex flex-col justify-between text-left border transition cursor-pointer ';
         if (isSelected) {
@@ -1657,40 +2005,40 @@
         } else {
           cls += 'bg-white hover:bg-byakugun-50 border-sabinando-100';
         }
-        btn.className = cls;
+        cell.className = cls;
 
-        let dayColor = 'text-sabinando-800';
-        if (dow === 0) dayColor = 'text-nando-600';
-        if (dow === 6) dayColor = 'text-sabinando-500';
+        let numColor = 'text-sabinando-800';
+        if (dow === 0) numColor = 'text-nando-600';
+        if (dow === 6) numColor = 'text-sabinando-500';
 
-        const photoBadge = info?.hasPhoto ? '<span class="text-[10px]" title="レシート写真あり">📷</span>' : '';
-        const dots = info
+        const camIcon = info?.hasPhoto ? '<span class="text-[10px]" title="レシート画像あり">📷</span>' : '';
+        const catDots = info
           ? [...new Set(info.cats)]
               .slice(0, 3)
               .map((cid) => `<span class="w-1.5 h-1.5 rounded-full inline-block" style="background:${getCategory(cid).color}"></span>`)
               .join('')
           : '';
 
-        const totalLabel = info?.total
+        const totalHtml = info?.total
           ? `<div class="text-[10px] sm:text-[11px] font-extrabold text-nando-700 num-tabular truncate w-full">${formatYen(info.total)}</div>`
           : `<div class="text-[10px] text-sabinando-300">—</div>`;
 
-        btn.innerHTML = `
+        cell.innerHTML = `
           <div class="flex items-center justify-between w-full">
-            <span class="text-xs font-extrabold num-tabular ${dayColor}">${day}</span>
-            ${photoBadge}
+            <span class="text-xs font-extrabold num-tabular ${numColor}">${day}</span>
+            ${camIcon}
           </div>
-          <div class="flex items-center gap-0.5 my-0.5">${dots}</div>
-          ${totalLabel}
+          <div class="flex items-center gap-0.5 my-0.5">${catDots}</div>
+          ${totalHtml}
         `;
-        grid.appendChild(btn);
+        grid.appendChild(cell);
       }
     }
 
     function changeMonth(delta) {
-      const d = new Date(state.viewYear, state.viewMonth + delta, 1);
-      state.viewYear = d.getFullYear();
-      state.viewMonth = d.getMonth();
+      const next = new Date(state.viewYear, state.viewMonth + delta, 1);
+      state.viewYear = next.getFullYear();
+      state.viewMonth = next.getMonth();
       renderCalendar();
     }
 
@@ -1707,7 +2055,6 @@
       state.viewYear = d.getFullYear();
       state.viewMonth = d.getMonth();
 
-      // 編集中でなければ入力フォームの日付も連動させる
       if (!document.getElementById('editingRecordId').value) {
         document.getElementById('inputDate').value = dateStr;
       }
@@ -1725,19 +2072,44 @@
       renderSelectedDaySection();
     }
 
-    function addQuickAmount(addVal) {
+    function toggleKeypad() {
+      const kp = document.getElementById('calcKeypad');
+      if (kp.classList.contains('hidden')) {
+        kp.classList.remove('hidden');
+        kp.classList.add('grid');
+      } else {
+        kp.classList.add('hidden');
+        kp.classList.remove('grid');
+      }
+    }
+
+    function pressKeypad(key) {
+      const input = document.getElementById('inputAmount');
+      const cur = String(input.value || '');
+      if (key === 'C') {
+        input.value = '';
+      } else if (key === 'BS') {
+        input.value = cur.slice(0, -1);
+      } else if (key === '00') {
+        if (cur.length > 0 && cur.length <= 7) input.value = cur + '00';
+      } else {
+        if (cur === '0') input.value = key;
+        else if (cur.length <= 8) input.value = cur + key;
+      }
+    }
+
+    function addQuickAmount(amount) {
       const input = document.getElementById('inputAmount');
       const cur = Math.max(0, Number(input.value) || 0);
-      input.value = cur + addVal;
+      input.value = cur + amount;
     }
 
     function renderCategoryPills() {
       const wrap = document.getElementById('categoryPillSelector');
-      const currentCat = document.getElementById('inputCategory').value || state.categories[0]?.id || 'food';
-
+      const curId = document.getElementById('inputCategory').value || state.categories[0]?.id || 'food';
       wrap.innerHTML = state.categories
         .map((c) => {
-          const active = c.id === currentCat;
+          const active = c.id === curId;
           return `
             <button
               type="button"
@@ -1762,32 +2134,32 @@
     }
 
     /**
-     * レシート写真のCanvas自動圧縮（最大幅1000px / JPEG品質0.75）
+     * レシート画像の自動圧縮（長辺1000px・JPEG品質0.75、約50〜100KB目安）
      */
-    function compressReceiptImage(file, maxSize = 1000, quality = 0.75) {
+    function compressReceiptImage(file, maxEdge = 1000, quality = 0.75) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onerror = () => reject(new Error('画像の読み込みに失敗しました'));
         reader.onload = (ev) => {
           const img = new Image();
-          img.onerror = () => reject(new Error('画像形式を認識できませんでした'));
+          img.onerror = () => reject(new Error('対応していない画像形式です'));
           img.onload = () => {
             let w = img.width;
             let h = img.height;
-            if (w > maxSize || h > maxSize) {
+            if (w > maxEdge || h > maxEdge) {
               if (w >= h) {
-                h = Math.round((h * maxSize) / w);
-                w = maxSize;
+                h = Math.round((h * maxEdge) / w);
+                w = maxEdge;
               } else {
-                w = Math.round((w * maxSize) / h);
-                h = maxSize;
+                w = Math.round((w * maxEdge) / h);
+                h = maxEdge;
               }
             }
             const canvas = document.createElement('canvas');
             canvas.width = w;
             canvas.height = h;
             const ctx = canvas.getContext('2d');
-            ctx.fillStyle = '#FFFFFF';
+            ctx.fillStyle = '#ffffff';
             ctx.fillRect(0, 0, w, h);
             ctx.drawImage(img, 0, 0, w, h);
 
@@ -1795,7 +2167,7 @@
             canvas.toBlob(
               (blob) => {
                 const kb = Math.max(1, Math.round((blob ? blob.size : (dataUrl.length * 3) / 4) / 1024));
-                resolve({ dataUrl, blob, label: `自動圧縮済み：約 ${kb} KB（${w}×${h}px）` });
+                resolve({ dataUrl, blob, label: `圧縮済み：約 ${kb} KB（${w}×${h}px）` });
               },
               'image/jpeg',
               quality
@@ -1811,20 +2183,20 @@
       const file = event.target.files?.[0];
       if (!file) return;
       try {
-        const res = await compressReceiptImage(file);
-        state.draftReceiptDataUrl = res.dataUrl;
-        state.draftReceiptBlob = res.blob;
-        state.draftReceiptLabel = res.label;
-        updateFormReceiptUI();
-        showToast('レシート写真をセットしました');
+        const compressed = await compressReceiptImage(file, 1000, 0.75);
+        state.draftReceiptDataUrl = compressed.dataUrl;
+        state.draftReceiptBlob = compressed.blob;
+        state.draftReceiptLabel = compressed.label;
+        await updateFormReceiptPreview();
+        showToast('レシート写真を添付しました');
       } catch (err) {
-        showToast(err.message || '写真の処理に失敗しました', 'error');
+        showToast(err.message || '写真の圧縮に失敗しました', 'error');
       } finally {
         event.target.value = '';
       }
     }
 
-    async function updateFormReceiptUI() {
+    async function updateFormReceiptPreview() {
       const wrap = document.getElementById('formReceiptPreviewWrap');
       const img = document.getElementById('formReceiptImg');
       const info = document.getElementById('formReceiptInfo');
@@ -1835,8 +2207,8 @@
         return;
       }
       wrap.classList.remove('hidden');
-      info.textContent = state.draftReceiptLabel || 'レシート写真あり';
-      const resolved = await resolveReceiptImgUrl(state.draftReceiptDataUrl);
+      info.textContent = state.draftReceiptLabel || 'レシート画像あり';
+      const resolved = await resolveReceiptUrl(state.draftReceiptDataUrl);
       img.src = resolved || state.draftReceiptDataUrl;
     }
 
@@ -1844,7 +2216,7 @@
       state.draftReceiptDataUrl = '';
       state.draftReceiptBlob = null;
       state.draftReceiptLabel = '';
-      updateFormReceiptUI();
+      updateFormReceiptPreview();
     }
 
     function resetRecordForm() {
@@ -1852,14 +2224,14 @@
       document.getElementById('inputDate').value = state.selectedDate;
       document.getElementById('inputAmount').value = '';
       document.getElementById('inputMemo').value = '';
-      document.getElementById('formModeTitle').innerHTML = '<span>✏️</span><span>この日に出費を記録</span>';
+      document.getElementById('formModeTitle').innerHTML = '<span>✏️</span><span>出費を記録する</span>';
       document.getElementById('submitRecordBtn').textContent = '記録する';
       document.getElementById('cancelEditBtn').classList.add('hidden');
       clearFormReceipt();
     }
 
-    function startEditRecord(id) {
-      const rec = state.records.find((r) => r.id === id);
+    function startEditRecord(recordId) {
+      const rec = state.records.find((r) => r.id === recordId);
       if (!rec) return;
 
       document.getElementById('editingRecordId').value = rec.id;
@@ -1874,9 +2246,9 @@
       state.draftReceiptDataUrl = rec.receipt_url || '';
       state.draftReceiptBlob = null;
       state.draftReceiptLabel = rec.receipt_url ? '保存済みのレシート写真' : '';
-      renderCategoryPills();
-      updateFormReceiptUI();
 
+      renderCategoryPills();
+      updateFormReceiptPreview();
       document.getElementById('recordForm').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
@@ -1894,13 +2266,20 @@
       }
 
       const nowIso = new Date().toISOString();
-      const blobToUpload = state.draftReceiptBlob;
-      let savedRecord = null;
+      const blobToSend = state.draftReceiptBlob;
+      let targetRecord = null;
 
       if (editId) {
         const idx = state.records.findIndex((r) => r.id === editId);
         if (idx !== -1) {
-          savedRecord = {
+          // もし元々レシートがあり、今回の編集で写真を外した場合はStorage側の古い画像も掃除
+          const oldReceipt = state.records[idx].receipt_url;
+          if (oldReceipt && !state.draftReceiptDataUrl && state.supabase && state.user) {
+            const sp = extractStoragePath(oldReceipt);
+            if (sp) state.supabase.storage.from('receipts').remove([sp]).catch(() => {});
+          }
+
+          targetRecord = {
             ...state.records[idx],
             date: dateVal,
             amount: amountVal,
@@ -1908,13 +2287,15 @@
             memo: memoVal,
             receipt_url: state.draftReceiptDataUrl || '',
             updated_at: nowIso,
-            isSample: false,
+            // 編集されたレコードに明示的に _dirty: true を付与
+            _dirty: true,
+            _ownerUserId: state.user ? state.user.id : state.records[idx]._ownerUserId || null,
           };
-          state.records[idx] = savedRecord;
+          state.records[idx] = targetRecord;
         }
-        showToast('出費データを更新しました');
+        showToast('出費を更新しました');
       } else {
-        savedRecord = {
+        targetRecord = {
           id: 'rec-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7),
           date: dateVal,
           amount: amountVal,
@@ -1922,9 +2303,12 @@
           memo: memoVal,
           receipt_url: state.draftReceiptDataUrl || '',
           updated_at: nowIso,
-          isSample: false,
+          // 新規作成レコードに明示的に _dirty: true, _synced: false を付与
+          _synced: false,
+          _dirty: true,
+          _ownerUserId: state.user ? state.user.id : null,
         };
-        state.records.unshift(savedRecord);
+        state.records.unshift(targetRecord);
         showToast(`${formatYen(amountVal)} を記録しました`);
       }
 
@@ -1937,44 +2321,43 @@
       resetRecordForm();
       renderAll();
 
-      if (savedRecord) {
-        await pushSingleRecordToCloud(savedRecord, blobToUpload);
+      if (targetRecord && state.user) {
+        await syncUpsertSingleRecord(targetRecord, blobToSend);
         renderSelectedDaySection();
       }
     }
 
-    function confirmDeleteRecord(id) {
-      const target = state.records.find((r) => r.id === id);
+    function confirmDeleteRecord(recordId) {
+      const target = state.records.find((r) => r.id === recordId);
       if (!target) return;
       const cat = getCategory(target.category);
+
       openConfirmModal(
-        'この出費を削除しますか？',
-        `${target.date}「${cat.emoji} ${cat.name} ${formatYen(target.amount)}」を削除します。`,
+        'この明細を削除しますか？',
+        `${target.date}「${cat.emoji} ${cat.name} ${formatYen(target.amount)}」を削除します。同期中の他端末からも削除されます。`,
         async () => {
-          state.records = state.records.filter((r) => r.id !== id);
-          saveLocalRecords();
-          if (document.getElementById('editingRecordId').value === id) {
+          if (document.getElementById('editingRecordId').value === recordId) {
             resetRecordForm();
           }
+          await executeRecordDelete(target);
           renderAll();
           showToast('削除しました');
-          await deleteSingleRecordFromCloud(target);
         }
       );
     }
 
     function renderSelectedDaySection() {
-      document.getElementById('selectedDateLabel').textContent = formatFullJPDate(state.selectedDate);
+      document.getElementById('selectedDateLabel').textContent = formatJPDateWithDow(state.selectedDate);
       if (!document.getElementById('editingRecordId').value) {
         document.getElementById('inputDate').value = state.selectedDate;
       }
 
-      const dayItems = state.records.filter((r) => r.date === state.selectedDate);
-      const daySum = dayItems.reduce((acc, r) => acc + (Number(r.amount) || 0), 0);
-      document.getElementById('selectedDateTotal').textContent = formatYen(daySum);
+      const dayRecords = state.records.filter((r) => r.date === state.selectedDate);
+      const dayTotal = dayRecords.reduce((s, r) => s + (Number(r.amount) || 0), 0);
+      document.getElementById('selectedDateTotal').textContent = formatYen(dayTotal);
 
       const listEl = document.getElementById('selectedDayList');
-      if (dayItems.length === 0) {
+      if (dayRecords.length === 0) {
         listEl.innerHTML = `
           <div class="rounded-2xl border border-dashed border-sabinando-200 bg-byakugun-50/50 p-5 text-center text-xs text-sabinando-500">
             この日の記録はまだありません。上のフォームから金額やレシート写真を登録できます。
@@ -1983,15 +2366,14 @@
         return;
       }
 
-      listEl.innerHTML = dayItems
+      listEl.innerHTML = dayRecords
         .map((rec) => {
           const cat = getCategory(rec.category);
-          const isStorageImg = rec.receipt_url && rec.receipt_url.startsWith('storage://');
-          const immediateSrc = isStorageImg
-            ? state.signedUrlCache[rec.receipt_url.replace('storage://', '')] || ''
-            : rec.receipt_url || '';
+          const sp = extractStoragePath(rec.receipt_url);
+          const cachedSigned = sp && state.signedUrlCache[sp]?.url ? state.signedUrlCache[sp].url : '';
+          const thumbSrc = sp ? cachedSigned : rec.receipt_url || '';
 
-          const receiptThumbHtml = rec.receipt_url
+          const receiptBlock = rec.receipt_url
             ? `
               <button
                 type="button"
@@ -1999,14 +2381,14 @@
                 class="mt-2.5 w-full flex items-center gap-2.5 p-2 rounded-xl bg-byakugun-50 hover:bg-byakugun-100 border border-byakugun-200 text-left transition cursor-pointer"
               >
                 <img
-                  src="${immediateSrc}"
-                  ${isStorageImg ? `data-storage-receipt="${escapeHtml(rec.receipt_url)}"` : ''}
+                  src="${thumbSrc}"
+                  ${sp ? `data-storage-receipt="${escapeHtml(rec.receipt_url)}"` : ''}
                   alt="レシートサムネイル"
                   class="w-12 h-12 rounded-lg object-cover bg-white border border-sabinando-200 shrink-0"
                 />
                 <div class="min-w-0 flex-1">
-                  <span class="text-xs font-bold text-nando-700 block">📷 レシート写真を拡大表示</span>
-                  <span class="text-[11px] text-sabinando-500">タップして明細を確認</span>
+                  <span class="text-xs font-bold text-nando-700 block">📷 レシート写真を拡大する</span>
+                  <span class="text-[11px] text-sabinando-500">タップして明細画像を表示</span>
                 </div>
               </button>
             `
@@ -2025,7 +2407,7 @@
                   <div class="min-w-0">
                     <div class="flex items-center gap-1.5">
                       <span class="text-xs font-bold text-sabinando-600">${escapeHtml(cat.name)}</span>
-                      ${rec.isSample ? '<span class="text-[10px] px-1.5 py-0.2 rounded bg-byakugun-100 text-nando-700 font-bold">見本</span>' : ''}
+                      ${rec._dirty && state.user ? '<span class="text-[10px] px-1.5 py-0.2 rounded bg-amber-100 text-amber-800 font-bold">未送信</span>' : ''}
                     </div>
                     <p class="text-xs sm:text-sm font-bold text-sabinando-800 truncate">
                       ${rec.memo ? escapeHtml(rec.memo) : 'メモなし'}
@@ -2053,13 +2435,13 @@
                   </div>
                 </div>
               </div>
-              ${receiptThumbHtml}
+              ${receiptBlock}
             </article>
           `;
         })
         .join('');
 
-      hydrateStorageReceiptImages();
+      hydrateStorageThumbnails();
     }
 
     async function openReceiptLightbox(recordId) {
@@ -2067,17 +2449,17 @@
       if (!rec || !rec.receipt_url) return;
       const cat = getCategory(rec.category);
 
-      document.getElementById('lightboxTitle').textContent = `${formatFullJPDate(rec.date)} ${cat.emoji}${cat.name}（${formatYen(rec.amount)}）`;
+      document.getElementById('lightboxTitle').textContent = `${formatJPDateWithDow(rec.date)} ${cat.emoji}${cat.name}（${formatYen(rec.amount)}）`;
       document.getElementById('lightboxSub').textContent = rec.memo || '';
 
-      const imgEl = document.getElementById('lightboxImg');
-      imgEl.src = '';
+      const img = document.getElementById('lightboxImg');
+      img.src = '';
       const modal = document.getElementById('receiptLightbox');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
 
-      const resolved = await resolveReceiptImgUrl(rec.receipt_url);
-      imgEl.src = resolved || rec.receipt_url;
+      const resolved = await resolveReceiptUrl(rec.receipt_url);
+      img.src = resolved || rec.receipt_url;
     }
 
     function closeReceiptLightbox() {
@@ -2088,49 +2470,55 @@
     }
 
     /* =====================================================================
-     * 期間比較（1w / 1m / 3m / 6m / 1y）＆ Chart.js グラフ描画
+     * 期間比較（1週間 / 1カ月 / 3カ月 / 6カ月 / 1年）＆ Chart.js グラフ可視化
      * ===================================================================== */
-    function getPeriodWindow(periodKey) {
+    function computePeriodRanges(periodKey) {
       const endCur = new Date();
       endCur.setHours(0, 0, 0, 0);
       let startCur;
       let startPrev;
       let endPrev;
       let label;
+      let prevLabel;
 
       if (periodKey === '1w') {
         startCur = shiftDays(endCur, -6);
         endPrev = shiftDays(startCur, -1);
         startPrev = shiftDays(endPrev, -6);
         label = '1週間';
+        prevLabel = '前の1週間';
       } else if (periodKey === '3m') {
         startCur = new Date(endCur.getFullYear(), endCur.getMonth() - 3, endCur.getDate() + 1);
         endPrev = shiftDays(startCur, -1);
         startPrev = new Date(endPrev.getFullYear(), endPrev.getMonth() - 3, endPrev.getDate() + 1);
         label = '3カ月';
+        prevLabel = '前の3カ月';
       } else if (periodKey === '6m') {
         startCur = new Date(endCur.getFullYear(), endCur.getMonth() - 6, endCur.getDate() + 1);
         endPrev = shiftDays(startCur, -1);
         startPrev = new Date(endPrev.getFullYear(), endPrev.getMonth() - 6, endPrev.getDate() + 1);
         label = '6カ月';
+        prevLabel = '前の6カ月';
       } else if (periodKey === '1y') {
         startCur = new Date(endCur.getFullYear() - 1, endCur.getMonth(), endCur.getDate() + 1);
         endPrev = shiftDays(startCur, -1);
-        startPrev = new Date(endPrev.getFullYear() - 1, endPrev.getMonth(), endPrev.getDate() + 1);
+        startPrev = new Date(endPrev.getFullYear(), endPrev.getMonth() - 1, endPrev.getDate() + 1);
         label = '1年';
+        prevLabel = '前の1年';
       } else {
         startCur = new Date(endCur.getFullYear(), endCur.getMonth() - 1, endCur.getDate() + 1);
         endPrev = shiftDays(startCur, -1);
         startPrev = new Date(endPrev.getFullYear(), endPrev.getMonth() - 1, endPrev.getDate() + 1);
         label = '1カ月';
+        prevLabel = '前の1カ月';
       }
 
       const days = Math.max(1, Math.round((endCur - startCur) / 86400000) + 1);
-      return { label, days, startCur, endCur, startPrev, endPrev };
+      return { label, prevLabel, days, startCur, endCur, startPrev, endPrev };
     }
 
-    function changePeriod(p) {
-      state.period = p;
+    function changePeriod(periodKey) {
+      state.period = periodKey;
       renderAnalyticsSection();
     }
 
@@ -2140,7 +2528,6 @@
     }
 
     function renderAnalyticsSection() {
-      // 期間タブのアクティブ装飾
       document.querySelectorAll('.period-tab').forEach((btn) => {
         const active = btn.dataset.period === state.period;
         btn.className = active
@@ -2148,7 +2535,6 @@
           : 'period-tab px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold text-sabinando-600 hover:bg-byakugun-100 transition cursor-pointer';
       });
 
-      // 棒グラフ切替ボタンの装飾
       const isTrend = state.barMode === 'trend';
       document.getElementById('btnBarModeTrend').className = isTrend
         ? 'px-2.5 py-1 rounded-lg font-extrabold bg-nando-500 text-white cursor-pointer'
@@ -2157,9 +2543,9 @@
         ? 'px-2.5 py-1 rounded-lg font-extrabold bg-nando-500 text-white cursor-pointer'
         : 'px-2.5 py-1 rounded-lg font-bold text-sabinando-600 hover:bg-byakugun-100 cursor-pointer';
 
-      const win = getPeriodWindow(state.period);
+      const win = computePeriodRanges(state.period);
       document.getElementById('periodRangeSubtitle').textContent =
-        `集計期間：${toDateStr(win.startCur)} 〜 ${toDateStr(win.endCur)}（前の${win.label}と比較）`;
+        `集計期間：${toDateStr(win.startCur)} 〜 ${toDateStr(win.endCur)}（${win.prevLabel}と比較）`;
 
       const curRecs = state.records.filter((r) => {
         const d = parseDateStr(r.date);
@@ -2176,57 +2562,57 @@
       const pct = prevTotal > 0 ? ((diff / prevTotal) * 100).toFixed(1) : null;
       const dailyAvg = Math.round(curTotal / win.days);
 
-      let diffText = '±¥0（変化なし）';
-      let diffClass = 'text-sabinando-600 bg-sabinando-100';
+      let diffBadgeText = '±¥0（変化なし）';
+      let diffBadgeCls = 'bg-sabinando-100 text-sabinando-700';
       if (diff > 0) {
-        diffText = `+${formatYen(diff)}${pct !== null ? ` (+${pct}%)` : ''}`;
-        diffClass = 'text-sabinando-800 bg-byakugun-200';
+        diffBadgeText = `+${formatYen(diff)}${pct !== null ? ` (+${pct}%)` : ''}`;
+        diffBadgeCls = 'bg-byakugun-200 text-sabinando-800';
       } else if (diff < 0) {
-        diffText = `${formatYen(diff)}${pct !== null ? ` (${pct}%)` : ''}`;
-        diffClass = 'text-nando-700 bg-nando-50';
+        diffBadgeText = `${formatYen(diff)}${pct !== null ? ` (${pct}%)` : ''}`;
+        diffBadgeCls = 'bg-nando-50 text-nando-700';
       }
 
       document.getElementById('comparisonCards').innerHTML = `
         <div class="bg-byakugun-50/90 border border-byakugun-200 rounded-2xl p-3.5">
-          <div class="text-xs font-bold text-sabinando-600">直近${win.label}の合計</div>
+          <div class="text-xs font-bold text-sabinando-600">直近${win.label}の支出合計</div>
           <div class="text-xl sm:text-2xl font-extrabold text-nando-600 mt-1 num-tabular">${formatYen(curTotal)}</div>
           <div class="text-[11px] text-sabinando-500 mt-1 num-tabular">記録件数：${curRecs.length}件</div>
         </div>
 
         <div class="bg-byakugun-50/90 border border-byakugun-200 rounded-2xl p-3.5">
-          <div class="text-xs font-bold text-sabinando-600">前の${win.label}との比較</div>
+          <div class="text-xs font-bold text-sabinando-600">${win.prevLabel}との比較</div>
           <div class="mt-1.5">
-            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-extrabold num-tabular ${diffClass}">
-              ${diffText}
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-extrabold num-tabular ${diffBadgeCls}">
+              ${diffBadgeText}
             </span>
           </div>
-          <div class="text-[11px] text-sabinando-500 mt-1.5 num-tabular">前期間合計：${formatYen(prevTotal)}</div>
+          <div class="text-[11px] text-sabinando-500 mt-1.5 num-tabular">${win.prevLabel}：${formatYen(prevTotal)}</div>
         </div>
 
         <div class="bg-byakugun-50/90 border border-byakugun-200 rounded-2xl p-3.5">
-          <div class="text-xs font-bold text-sabinando-600">1日あたり平均</div>
+          <div class="text-xs font-bold text-sabinando-600">1日あたりの平均</div>
           <div class="text-xl sm:text-2xl font-extrabold text-sabinando-800 mt-1 num-tabular">
             ${formatYen(dailyAvg)}<span class="text-xs font-bold text-sabinando-500"> /日</span>
           </div>
-          <div class="text-[11px] text-sabinando-500 mt-1 num-tabular">対象日数：${win.days}日間</div>
+          <div class="text-[11px] text-sabinando-500 mt-1 num-tabular">期間日数：${win.days}日</div>
         </div>
       `;
 
-      // カテゴリ別集計
+      // カテゴリ別の集計リスト生成
       const catStats = state.categories.map((c) => {
         const curSum = curRecs.filter((r) => r.category === c.id).reduce((s, r) => s + (Number(r.amount) || 0), 0);
         const prevSum = prevRecs.filter((r) => r.category === c.id).reduce((s, r) => s + (Number(r.amount) || 0), 0);
-        const share = curTotal > 0 ? ((curSum / curTotal) * 100).toFixed(1) : '0.0';
-        return { cat: c, curSum, prevSum, share: Number(share) };
+        const share = curTotal > 0 ? (curSum / curTotal) * 100 : 0;
+        return { cat: c, curSum, prevSum, share };
       });
 
-      const sortedPositive = [...catStats].filter((x) => x.curSum > 0).sort((a, b) => b.curSum - a.curSum);
+      const positiveStats = [...catStats].filter((x) => x.curSum > 0).sort((a, b) => b.curSum - a.curSum);
       const breakdownEl = document.getElementById('categoryBreakdownList');
 
-      if (sortedPositive.length === 0) {
-        breakdownEl.innerHTML = `<div class="text-xs text-sabinando-500 py-8 text-center">この期間の出費データはありません</div>`;
+      if (positiveStats.length === 0) {
+        breakdownEl.innerHTML = `<div class="text-xs text-sabinando-500 py-8 text-center">この期間の出費記録はまだありません</div>`;
       } else {
-        breakdownEl.innerHTML = sortedPositive
+        breakdownEl.innerHTML = positiveStats
           .map(
             (item) => `
               <div class="bg-byakugun-50/70 border border-sabinando-100 rounded-xl px-3 py-2">
@@ -2248,41 +2634,44 @@
           .join('');
       }
 
-      // モバイルで非表示タブのときはCanvas幅0エラーを避けるため表示中のみChart描画
+      // モバイルで非表示タブにいるときはCanvasサイズが0になるのを防ぐ
       const analyticsPanel = document.getElementById('tabPanelAnalytics');
       if (window.innerWidth < 1024 && analyticsPanel.classList.contains('hidden')) {
         return;
       }
 
-      drawDoughnutChart(sortedPositive);
+      drawDoughnutChart(positiveStats);
       if (state.barMode === 'trend') {
         document.getElementById('barChartHeading').textContent = '期間内の支出推移（種類別積み上げ）';
         document.getElementById('barChartSub').textContent =
-          state.period === '1w' || state.period === '1m'
-            ? '日ごとの支出と種類別の内訳推移'
-            : '月ごとの支出と種類別の内訳推移';
+          state.period === '1w' || state.period === '1m' ? '日別の推移と種類ごとの内訳' : '月別の推移と種類ごとの内訳';
         drawStackedTrendChart(win, curRecs);
       } else {
-        document.getElementById('barChartHeading').textContent = `直近${win.label} vs 前の${win.label}（種類別比較）`;
-        document.getElementById('barChartSub').textContent = '前の期間と比べてどの種類が増減したかを比較';
+        document.getElementById('barChartHeading').textContent = `直近${win.label} vs ${win.prevLabel}（種類別比較）`;
+        document.getElementById('barChartSub').textContent = '前の期間とくらべてどの種類が増減したかを可視化';
         drawCompareBarChart(win, catStats);
       }
     }
 
-    function drawDoughnutChart(sortedPositive) {
-      const ctx = document.getElementById('doughnutChartCanvas').getContext('2d');
-      if (doughnutChart) doughnutChart.destroy();
+    function drawDoughnutChart(positiveStats) {
+      const canvas = document.getElementById('doughnutChartCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (doughnutChartInstance) {
+        doughnutChartInstance.destroy();
+        doughnutChartInstance = null;
+      }
 
       const fontFam = "'M PLUS Rounded 1c', 'Zen Maru Gothic', sans-serif";
-      doughnutChart = new Chart(ctx, {
+      doughnutChartInstance = new Chart(ctx, {
         type: 'doughnut',
         data: {
-          labels: sortedPositive.length ? sortedPositive.map((x) => `${x.cat.emoji} ${x.cat.name}`) : ['記録なし'],
+          labels: positiveStats.length ? positiveStats.map((x) => `${x.cat.emoji} ${x.cat.name}`) : ['記録なし'],
           datasets: [
             {
-              data: sortedPositive.length ? sortedPositive.map((x) => x.curSum) : [1],
-              backgroundColor: sortedPositive.length ? sortedPositive.map((x) => x.cat.color) : ['#E6ECEF'],
-              borderColor: '#FFFFFF',
+              data: positiveStats.length ? positiveStats.map((x) => x.curSum) : [1],
+              backgroundColor: positiveStats.length ? positiveStats.map((x) => x.cat.color) : ['#e8edf0'],
+              borderColor: '#ffffff',
               borderWidth: 2.5,
               hoverOffset: 5,
             },
@@ -2295,11 +2684,11 @@
           plugins: {
             legend: { display: false },
             tooltip: {
-              backgroundColor: '#232F38',
+              backgroundColor: '#232e36',
               titleFont: { family: fontFam, size: 12 },
               bodyFont: { family: fontFam, size: 12 },
               callbacks: {
-                label: (c) => (sortedPositive.length ? ` ${formatYen(c.parsed)}` : ' 記録なし'),
+                label: (c) => (positiveStats.length ? ` ${formatYen(c.parsed)}` : ' 記録なし'),
               },
             },
           },
@@ -2308,62 +2697,62 @@
     }
 
     function drawStackedTrendChart(win, curRecs) {
-      const ctx = document.getElementById('barChartCanvas').getContext('2d');
-      if (barChart) barChart.destroy();
+      const canvas = document.getElementById('barChartCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (barChartInstance) {
+        barChartInstance.destroy();
+        barChartInstance = null;
+      }
       const fontFam = "'M PLUS Rounded 1c', 'Zen Maru Gothic', sans-serif";
 
-      // バケット生成：1w / 1m は日別、3m / 6m / 1y は月別
       const buckets = [];
       if (state.period === '1w' || state.period === '1m') {
-        let cursor = new Date(win.startCur);
-        while (cursor <= win.endCur) {
-          const key = toDateStr(cursor);
+        let cur = new Date(win.startCur);
+        while (cur <= win.endCur) {
           buckets.push({
-            key,
-            label: `${cursor.getMonth() + 1}/${cursor.getDate()}`,
+            key: toDateStr(cur),
+            label: `${cur.getMonth() + 1}/${cur.getDate()}`,
           });
-          cursor = shiftDays(cursor, 1);
+          cur = shiftDays(cur, 1);
         }
       } else {
         const startYM = new Date(win.startCur.getFullYear(), win.startCur.getMonth(), 1);
         const endYM = new Date(win.endCur.getFullYear(), win.endCur.getMonth(), 1);
-        let cursor = new Date(startYM);
-        while (cursor <= endYM) {
-          const ymKey = `${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, '0')}`;
+        let cur = new Date(startYM);
+        while (cur <= endYM) {
+          const ymKey = `${cur.getFullYear()}-${String(cur.getMonth() + 1).padStart(2, '0')}`;
           buckets.push({
             key: ymKey,
-            label: `${cursor.getMonth() + 1}月`,
+            label: `${cur.getMonth() + 1}月`,
           });
-          cursor = new Date(cursor.getFullYear(), cursor.getMonth() + 1, 1);
+          cur = new Date(cur.getFullYear(), cur.getMonth() + 1, 1);
         }
       }
 
-      // 支出があるカテゴリのみデータセット化
-      const activeCats = state.categories.filter((cat) =>
-        curRecs.some((r) => r.category === cat.id && Number(r.amount) > 0)
+      const activeCats = state.categories.filter((c) =>
+        curRecs.some((r) => r.category === c.id && Number(r.amount) > 0)
       );
 
       const datasets = (activeCats.length ? activeCats : [state.categories[0]]).map((cat) => {
-        const dataArr = buckets.map((b) => {
-          return curRecs
+        const dataPoints = buckets.map((b) =>
+          curRecs
             .filter((r) => {
               if (r.category !== cat.id) return false;
-              return state.period === '1w' || state.period === '1m'
-                ? r.date === b.key
-                : r.date.startsWith(b.key);
+              return state.period === '1w' || state.period === '1m' ? r.date === b.key : r.date.startsWith(b.key);
             })
-            .reduce((s, r) => s + (Number(r.amount) || 0), 0);
-        });
+            .reduce((s, r) => s + (Number(r.amount) || 0), 0)
+        );
         return {
           label: `${cat.emoji} ${cat.name}`,
-          data: activeCats.length ? dataArr : buckets.map(() => 0),
+          data: activeCats.length ? dataPoints : buckets.map(() => 0),
           backgroundColor: cat.color,
           borderRadius: 4,
           maxBarThickness: 28,
         };
       });
 
-      barChart = new Chart(ctx, {
+      barChartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
           labels: buckets.map((b) => b.label),
@@ -2381,17 +2770,17 @@
             y: {
               stacked: true,
               beginAtZero: true,
-              grid: { color: '#E6ECEF' },
-              ticks: { font: { family: fontFam, size: 10 }, color: '#647786', callback: (v) => formatYen(v) },
+              grid: { color: '#e8edf0' },
+              ticks: { font: { family: fontFam, size: 10 }, color: '#5f7382', callback: (v) => formatYen(v) },
             },
           },
           plugins: {
             legend: {
               position: 'bottom',
-              labels: { font: { family: fontFam, size: 11, weight: 'bold' }, color: '#232F38', boxWidth: 10, usePointStyle: true },
+              labels: { font: { family: fontFam, size: 11, weight: 'bold' }, color: '#232e36', boxWidth: 10, usePointStyle: true },
             },
             tooltip: {
-              backgroundColor: '#232F38',
+              backgroundColor: '#232e36',
               callbacks: { label: (c) => ` ${c.dataset.label}: ${formatYen(c.parsed.y)}` },
             },
           },
@@ -2400,29 +2789,34 @@
     }
 
     function drawCompareBarChart(win, catStats) {
-      const ctx = document.getElementById('barChartCanvas').getContext('2d');
-      if (barChart) barChart.destroy();
+      const canvas = document.getElementById('barChartCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (barChartInstance) {
+        barChartInstance.destroy();
+        barChartInstance = null;
+      }
       const fontFam = "'M PLUS Rounded 1c', 'Zen Maru Gothic', sans-serif";
 
       const visible = catStats.filter((x) => x.curSum > 0 || x.prevSum > 0);
-      const list = visible.length ? visible : catStats.slice(0, 4);
+      const targetList = visible.length ? visible : catStats.slice(0, 5);
 
-      barChart = new Chart(ctx, {
+      barChartInstance = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: list.map((x) => `${x.cat.emoji} ${x.cat.name}`),
+          labels: targetList.map((x) => `${x.cat.emoji} ${x.cat.name}`),
           datasets: [
             {
               label: `直近${win.label}`,
-              data: list.map((x) => x.curSum),
+              data: targetList.map((x) => x.curSum),
               backgroundColor: '#008899',
               borderRadius: 8,
               maxBarThickness: 28,
             },
             {
-              label: `前の${win.label}`,
-              data: list.map((x) => x.prevSum),
-              backgroundColor: '#83CCD2',
+              label: win.prevLabel,
+              data: targetList.map((x) => x.prevSum),
+              backgroundColor: '#83ccd2',
               borderRadius: 8,
               maxBarThickness: 28,
             },
@@ -2438,17 +2832,17 @@
             },
             y: {
               beginAtZero: true,
-              grid: { color: '#E6ECEF' },
-              ticks: { font: { family: fontFam, size: 10 }, color: '#647786', callback: (v) => formatYen(v) },
+              grid: { color: '#e8edf0' },
+              ticks: { font: { family: fontFam, size: 10 }, color: '#5f7382', callback: (v) => formatYen(v) },
             },
           },
           plugins: {
             legend: {
               position: 'bottom',
-              labels: { font: { family: fontFam, size: 11, weight: 'bold' }, color: '#232F38', usePointStyle: true },
+              labels: { font: { family: fontFam, size: 11, weight: 'bold' }, color: '#232e36', usePointStyle: true },
             },
             tooltip: {
-              backgroundColor: '#232F38',
+              backgroundColor: '#232e36',
               callbacks: { label: (c) => ` ${c.dataset.label}: ${formatYen(c.parsed.y)}` },
             },
           },
@@ -2457,10 +2851,10 @@
     }
 
     /* =====================================================================
-     * カテゴリ追加・削除 ＆ JSONバックアップ管理UI
+     * カテゴリの自由追加・削除 ＆ JSONバックアップ書き出し・読み込み
      * ===================================================================== */
     function buildManageHTML(prefix) {
-      const catRows = state.categories
+      const catListHtml = state.categories
         .map(
           (c) => `
             <div class="flex items-center justify-between px-3 py-2 rounded-xl bg-byakugun-50 border border-sabinando-100">
@@ -2479,11 +2873,11 @@
         )
         .join('');
 
-      const emojiBtns = CATEGORY_EMOJI_PALETTE.map(
+      const emojiHtml = CATEGORY_EMOJI_PALETTE.map(
         (em) => `
           <button
             type="button"
-            onclick="pickNewCatEmoji('${em}')"
+            onclick="selectNewCatEmoji('${em}')"
             class="w-8 h-8 rounded-lg flex items-center justify-center text-base transition cursor-pointer ${
               state.newCatEmoji === em ? 'bg-byakugun-200 ring-2 ring-nando-500' : 'bg-white hover:bg-byakugun-100'
             }"
@@ -2491,13 +2885,13 @@
         `
       ).join('');
 
-      const colorBtns = CATEGORY_COLOR_PALETTE.map(
+      const colorHtml = CATEGORY_COLOR_PALETTE.map(
         (col) => `
           <button
             type="button"
-            onclick="pickNewCatColor('${col}')"
+            onclick="selectNewCatColor('${col}')"
             class="w-6 h-6 rounded-full transition cursor-pointer ${
-              state.newCatColor === col ? 'ring-2 ring-offset-2 ring-sabinando-800 scale-110' : 'opacity-80 hover:opacity-100'
+              state.newCatColor === col ? 'ring-2 ring-offset-2 ring-sabinando-700 scale-110' : 'opacity-80 hover:opacity-100'
             }"
             style="background:${col}"
           ></button>
@@ -2506,20 +2900,20 @@
 
       return `
         <div class="space-y-5">
-          <!-- 新しい出費の種類を追加 -->
-          <div class="bg-white border border-sabinando-200 rounded-3xl p-4 sm:p-5 shadow-xs space-y-3">
-            <h4 class="text-sm font-extrabold text-sabinando-800">🏷️ 出費の種類を追加</h4>
+          <!-- カテゴリの追加 -->
+          <div class="bg-white border border-sabinando-200 rounded-[20px] p-4 sm:p-5 shadow-xs space-y-3">
+            <h4 class="text-sm font-extrabold text-sabinando-800">🏷️ 新しい種類（カテゴリ）を追加</h4>
             <div class="flex gap-2">
               <input
                 type="text"
                 id="${prefix}NewCatName"
                 maxlength="18"
-                placeholder="例：カフェ、ペット、美容"
+                placeholder="例：美容、教育費、ペット"
                 class="flex-1 px-3 py-2 rounded-xl bg-byakugun-50 border border-sabinando-200 text-xs sm:text-sm outline-none focus:border-nando-500"
               />
               <button
                 type="button"
-                onclick="addCategoryFromInput('${prefix}NewCatName')"
+                onclick="handleAddCategory('${prefix}NewCatName')"
                 class="px-4 py-2 rounded-xl bg-nando-500 hover:bg-nando-600 text-white font-bold text-xs sm:text-sm shrink-0 cursor-pointer"
               >
                 追加
@@ -2527,37 +2921,37 @@
             </div>
             <div>
               <span class="text-[11px] font-bold text-sabinando-600 block mb-1">アイコン</span>
-              <div class="flex flex-wrap gap-1">${emojiBtns}</div>
+              <div class="flex flex-wrap gap-1">${emojiHtml}</div>
             </div>
             <div>
               <span class="text-[11px] font-bold text-sabinando-600 block mb-1">グラフの色</span>
-              <div class="flex flex-wrap gap-2">${colorBtns}</div>
+              <div class="flex flex-wrap gap-2">${colorHtml}</div>
             </div>
           </div>
 
-          <!-- 登録済みカテゴリ一覧 -->
-          <div class="bg-white border border-sabinando-200 rounded-3xl p-4 sm:p-5 shadow-xs">
+          <!-- 現在のカテゴリ一覧 -->
+          <div class="bg-white border border-sabinando-200 rounded-[20px] p-4 sm:p-5 shadow-xs">
             <h4 class="text-sm font-extrabold text-sabinando-800 mb-2.5">登録中の種類一覧</h4>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-52 overflow-y-auto pr-1">
-              ${catRows}
+              ${catListHtml}
             </div>
           </div>
 
-          <!-- バックアップ書き出し / 読み込み -->
-          <div class="bg-white border border-sabinando-200 rounded-3xl p-4 sm:p-5 shadow-xs space-y-2.5">
-            <h4 class="text-sm font-extrabold text-sabinando-800">💾 ファイルバックアップ（JSON）</h4>
-            <p class="text-xs text-sabinando-500">手元に控えファイルを保存したり、復元したりできます。</p>
+          <!-- JSONバックアップ -->
+          <div class="bg-white border border-sabinando-200 rounded-[20px] p-4 sm:p-5 shadow-xs space-y-2.5">
+            <h4 class="text-sm font-extrabold text-sabinando-800">💾 JSONバックアップ（書き出し・読み込み）</h4>
+            <p class="text-xs text-sabinando-500">家計簿データをJSONファイルとして保存・復元できます。</p>
             <div class="flex flex-wrap gap-2 pt-1">
               <button
                 type="button"
-                onclick="exportBackupJson()"
-                class="flex-1 min-w-[130px] py-2 px-3 rounded-xl bg-byakugun-100 hover:bg-byakugun-200 text-nando-700 font-bold text-xs cursor-pointer"
+                onclick="exportJsonBackup()"
+                class="flex-1 min-w-[130px] py-2.5 px-3 rounded-xl bg-byakugun-100 hover:bg-byakugun-200 text-nando-700 font-bold text-xs cursor-pointer"
               >
-                ⬇️ バックアップ保存
+                ⬇️ JSONを書き出す
               </button>
-              <label class="flex-1 min-w-[130px] py-2 px-3 rounded-xl bg-sabinando-100 hover:bg-sabinando-200 text-sabinando-700 font-bold text-xs text-center cursor-pointer">
-                📂 ファイルから復元
-                <input type="file" accept=".json,application/json" onchange="importBackupJson(event)" class="hidden" />
+              <label class="flex-1 min-w-[130px] py-2.5 px-3 rounded-xl bg-sabinando-100 hover:bg-sabinando-200 text-sabinando-700 font-bold text-xs text-center cursor-pointer">
+                📂 JSONを読み込む
+                <input type="file" accept=".json,application/json" onchange="importJsonBackup(event)" class="hidden" />
               </label>
             </div>
           </div>
@@ -2565,26 +2959,26 @@
       `;
     }
 
-    function renderManageContent() {
-      const mobMount = document.getElementById('mobileManageMount');
-      const deskMount = document.getElementById('desktopManageMount');
-      if (mobMount) mobMount.innerHTML = buildManageHTML('mob');
-      if (deskMount) deskMount.innerHTML = buildManageHTML('desk');
+    function renderManagePanels() {
+      const mob = document.getElementById('mobileManageMount');
+      const desk = document.getElementById('desktopManageMount');
+      if (mob) mob.innerHTML = buildManageHTML('mob');
+      if (desk) desk.innerHTML = buildManageHTML('desk');
     }
 
-    function pickNewCatEmoji(em) {
+    function selectNewCatEmoji(em) {
       state.newCatEmoji = em;
-      renderManageContent();
+      renderManagePanels();
     }
 
-    function pickNewCatColor(col) {
+    function selectNewCatColor(col) {
       state.newCatColor = col;
-      renderManageContent();
+      renderManagePanels();
     }
 
-    async function addCategoryFromInput(inputId) {
-      const input = document.getElementById(inputId);
-      const name = input ? input.value.trim() : '';
+    async function handleAddCategory(inputId) {
+      const el = document.getElementById(inputId);
+      const name = el ? el.value.trim() : '';
       if (!name) {
         showToast('種類の名前を入力してください', 'error');
         return;
@@ -2596,32 +2990,39 @@
         color: state.newCatColor,
       };
       state.categories.push(newCat);
+      state.categoriesDirty = true;
       saveLocalCategories();
       renderAll();
       showToast(`「${newCat.emoji} ${name}」を追加しました`);
-      await pushCategoriesToCloud();
+
+      if (state.supabase && state.user) {
+        await syncWithCloud({ showToastOnSuccess: false });
+      }
     }
 
     function confirmDeleteCategory(catId) {
       const target = getCategory(catId);
       openConfirmModal(
         `種類「${target.name}」を削除しますか？`,
-        'すでにこの種類で記録されている出費データは消えず、「その他」として表示されます。',
+        'この種類で記録済みの明細は削除されず、「その他」として表示されます。',
         async () => {
           state.categories = state.categories.filter((c) => c.id !== catId);
+          state.categoriesDirty = true;
           saveLocalCategories();
           if (document.getElementById('inputCategory').value === catId) {
             document.getElementById('inputCategory').value = state.categories[0]?.id || 'other';
           }
           renderAll();
           showToast(`「${target.name}」を削除しました`);
-          await pushCategoriesToCloud();
+          if (state.supabase && state.user) {
+            await syncWithCloud({ showToastOnSuccess: false });
+          }
         }
       );
     }
 
     function openManageModal() {
-      renderManageContent();
+      renderManagePanels();
       const modal = document.getElementById('manageModal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
@@ -2633,14 +3034,24 @@
       modal.classList.remove('flex');
     }
 
-    function exportBackupJson() {
-      const data = {
+    function exportJsonBackup() {
+      const cleanRecords = state.records.map((r) => ({
+        id: r.id,
+        date: r.date,
+        amount: r.amount,
+        category: r.category,
+        memo: r.memo,
+        receipt_url: r.receipt_url,
+        updated_at: r.updated_at,
+      }));
+      const payload = {
         app: '家計簿',
+        version: 3,
         exportedAt: new Date().toISOString(),
         categories: state.categories,
-        records: state.records.filter((r) => !r.isSample),
+        records: cleanRecords,
       };
-      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -2649,40 +3060,57 @@
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
-      showToast('バックアップJSONを保存しました');
+      showToast('バックアップJSONを書き出しました');
     }
 
-    function importBackupJson(event) {
+    function importJsonBackup(event) {
       const file = event.target.files?.[0];
       if (!file) return;
+
       const reader = new FileReader();
       reader.onload = async (ev) => {
         try {
           const parsed = JSON.parse(ev.target.result);
           const list = parsed.records || parsed.expenses;
-          if (!Array.isArray(list)) throw new Error('家計簿データが見つかりません');
+          if (!Array.isArray(list)) throw new Error('有効な家計簿データが見つかりません');
 
-          state.records = list.map((r) => ({
-            id: r.id || 'rec-' + Date.now() + Math.random().toString(36).slice(2, 6),
-            date: r.date,
-            amount: Number(r.amount) || 0,
-            category: r.category || r.categoryId || 'other',
-            memo: r.memo || '',
-            receipt_url: r.receipt_url || r.receipt || '',
-            updated_at: r.updated_at || new Date().toISOString(),
-            isSample: false,
-          }));
+          const uid = state.user ? state.user.id : null;
+          const importedMap = new Map();
+
+          // 既存レコードをベースにしつつインポート分を _dirty: true で取り込む
+          state.records.forEach((r) => importedMap.set(r.id, r));
+          list.forEach((item) => {
+            const id = item.id || 'rec-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6);
+            importedMap.set(String(id), {
+              id: String(id),
+              date: String(item.date),
+              amount: Math.round(Number(item.amount) || 0),
+              category: String(item.category || item.categoryId || 'other'),
+              memo: String(item.memo || ''),
+              receipt_url: String(item.receipt_url || item.receipt || ''),
+              updated_at: new Date().toISOString(),
+              _synced: false,
+              _dirty: true,
+              _ownerUserId: uid,
+            });
+          });
+
+          state.records = Array.from(importedMap.values()).sort((a, b) => (a.date < b.date ? 1 : -1));
 
           if (Array.isArray(parsed.categories) && parsed.categories.length > 0) {
             state.categories = parsed.categories;
+            state.categoriesDirty = true;
             saveLocalCategories();
           }
           saveLocalRecords();
           renderAll();
-          showToast(`${state.records.length}件のデータを読み込みました`);
-          if (state.user) await syncWithCloud(true);
+          showToast(`${list.length}件のデータを読み込みました`);
+
+          if (state.user) {
+            await syncWithCloud({ showToastOnSuccess: true });
+          }
         } catch (err) {
-          showToast('読み込みエラー: ' + err.message, 'error');
+          showToast('JSONの読み込みに失敗しました: ' + err.message, 'error');
         } finally {
           event.target.value = '';
         }
@@ -2691,18 +3119,18 @@
     }
 
     /* =====================================================================
-     * スマホ用 下部タブ切り替え ＆ ウィンドウリサイズ対応
+     * モバイル下部ナビ切り替え ＆ タブ復帰時（focus / visibilitychange）自動同期
      * ===================================================================== */
-    function switchMobileTab(tab) {
-      state.mobileTab = tab;
-      updateMobileTabStyles();
-      if (tab === 'analytics') {
+    function switchMobileTab(tabName) {
+      state.mobileTab = tabName;
+      updateMobileTabUI();
+      if (tabName === 'analytics') {
         renderAnalyticsSection();
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function updateMobileTabStyles() {
+    function updateMobileTabUI() {
       const isDesktop = window.innerWidth >= 1024;
       const cal = document.getElementById('tabPanelCalendar');
       const ana = document.getElementById('tabPanelAnalytics');
@@ -2727,25 +3155,43 @@
     }
 
     window.addEventListener('resize', () => {
-      updateMobileTabStyles();
+      updateMobileTabUI();
     });
 
-    // アプリ画面に戻ってきたタイミングでクラウドから最新データを自動取得
+    /**
+     * PCやスマホで開きっぱなしのタブに戻った瞬間に自動でクラウドから最新状態を取得！
+     * スマホで削除したあと、開きっぱなしのPC画面にフォーカスするだけでPCからも自動的に消える。
+     */
+    function triggerAutoRefreshIfLoggedIn() {
+      if (!state.user || state.isSyncing) return;
+      // 連続発火防止（最低2秒間隔）
+      if (Date.now() - state.lastAutoSyncAt < 2000) return;
+      syncWithCloud({ showToastOnSuccess: false });
+    }
+
     document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible' && state.user && !state.isSyncing) {
-        syncWithCloud(false);
+      if (document.visibilityState === 'visible') {
+        triggerAutoRefreshIfLoggedIn();
       }
+    });
+
+    window.addEventListener('focus', () => {
+      triggerAutoRefreshIfLoggedIn();
+    });
+
+    window.addEventListener('online', () => {
+      triggerAutoRefreshIfLoggedIn();
     });
 
     /* =====================================================================
      * 初期化エントリーポイント
      * ===================================================================== */
     window.addEventListener('DOMContentLoaded', async () => {
-      setupPWA();
-      loadLocalData();
+      initPWA();
+      loadLocalState();
       document.getElementById('inputDate').value = state.selectedDate;
       renderAll();
-      await restoreSupabaseSession();
+      await restoreSessionAndSync();
     });
   </script>
 </body>
